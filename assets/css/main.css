@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Satoshi-Black", sans-serif;
+  --color-black: #000;
+  --color-red: #F20000;
+  --color-yellow: #FFD10A;
+  --color-purple: #7D00FF;
+  --color-orange: #FF5400;
+  --text-sm: clamp(0.8rem, 1vi + 0.25rem, 1.25rem);
+  --text-base: clamp(1rem, 1vi + 0.3rem, 1.8rem);
+  --text-md: clamp(1.2rem, 1.2vi + 0.6rem, 3rem);
+  --text-lg: clamp(1.35rem, 1vi + 0.8rem, 3rem);
+  --text-xl: clamp(2.5rem, 4.5vi + 2rem, 12rem);
+  --text-2xl: clamp(3rem, 5.5vi + 2rem, 14rem);
+  --xs: calc(var(--spacing));
+  --sm: calc(var(--spacing) * 3);
+  --md: calc(var(--spacing) * 12);
+  --lg: calc(var(--spacing) * 30);
+  --xl: calc(var(--spacing) * 60);
+  --2xl: calc(var(--spacing) * 120);
+  --spacing: clamp(0.12rem, 0.2vi + 0.05rem, .25rem);
+  --nav-height: calc(var(--text-md) * 1.75 + var(--sm) * 2);
+}
+
+@layer base {
+  p {
+    font-size: var(--text-base);
+    text-shadow: var(--text-shadow);
+    line-height: 1.2;
+  }
+  h1 {
+    font-size: var(--text-2xl);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+  h2 {
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+  h3 {
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+  h4 {
+    font-size: var(--text-md);
+    text-transform: uppercase;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-red);
+  letter-spacing: -0.025em;
+}
+
+@font-face {
+  font-family: 'Satoshi-Black';
+  src: url('../fonts/Satoshi-Black.woff2') format('woff2'),
+       url('../fonts/Satoshi-Black.woff') format('woff'),
+       url('../fonts/Satoshi-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi-BlackItalic';
+  src: url('../fonts/Satoshi-BlackItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-BlackItalic.woff') format('woff'),
+       url('../fonts/Satoshi-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
