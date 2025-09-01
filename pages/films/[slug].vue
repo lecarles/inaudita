@@ -1,8 +1,8 @@
 <template>
   <div class="inaudita-film">
-    <div class="film-video text-xl uppercase leading-[0.9] text-white">
-      <div class="text-left">{{ movie.data.story.content.title }}</div>
-      <div class="text-right">
+    <div class="film-video uppercase text-white">
+      <div class="text-center md:text-left text-xl leading-[0.9]">{{ movie.data.story.content.title }}</div>
+      <div class="text-right md:text-md text-xl leading-[0.9]">
         <div>2024</div>
         <div>{{ movie.data.story.content.duration }}</div>
       </div>
@@ -23,11 +23,12 @@
       <div class="film-info-awards mt-(--2xl)">
         premios
       </div>
-      <div class="film-info-gallery mt-(--2xl)">
+      <div class="film-info-gallery mt-(--md)">
         <still-gallery />
       </div>
     </div>
   </div>
+  <inaudita-footer />
 </template>
 
 <script setup>
@@ -43,7 +44,7 @@ useServerSeoMeta({
 
 <style lang="scss">
 .inaudita-film {
-  padding: 0 var(--sm) var(--sm);
+  padding: 0 var(--sm);
   margin-top: var(--nav-height);
 
   .film-video {
@@ -64,6 +65,14 @@ useServerSeoMeta({
     &-primary {
       display: grid;
       grid-template-columns: 3fr 1fr;
+    }
+
+    &-awards {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--color-white);
     }
   }
 
@@ -97,6 +106,25 @@ useServerSeoMeta({
     strong {
       font-size: var(--text-base);
       text-transform: uppercase;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .inaudita-film {
+    .film-video {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    .film-credits-secondary, .film-credits-cast {
+      column-count: 1;
+    }
+
+    .film-info {
+      &-primary {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

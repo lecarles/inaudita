@@ -1,8 +1,8 @@
 <template>
   <div class="inaudita-home">
     <films-carousel />
-    <div class="film-list text-2xl text-center">
-      <h1 class="leading-[0.9] p-(--xl)">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
+    <div class="film-list text-center">
+      <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-xl md:text-2xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
     </div>
     <film-list />
     <div class="home-footer text-white">
