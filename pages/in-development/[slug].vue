@@ -7,7 +7,7 @@
       </div>
       <div class="text-balance text-center md:text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
       <div class="text-right text-md md:text-xl leading-[0.9] z-10">
-        <div>2024</div>
+        <div>year</div>
         <div>{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>

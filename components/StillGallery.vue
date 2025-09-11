@@ -8,9 +8,9 @@
         <div 
           ref="stills"
           class="still" 
-          v-for="(still, i) in stillImages" 
+          v-for="(still, i) in stillsArray" 
           :key="i"
-          :style="{ backgroundImage: `url(${still.image})` }"
+          :style="{ backgroundImage: `url(${still.filename}/m/1500x0)` }"
         >
         </div>
       </div>
@@ -19,11 +19,11 @@
     <div class="still-gallery-controls">
       <div 
         class="still-thumbnail"
-        v-for="(still, i) in stillImages"
+        v-for="(still, i) in stillsArray"
         :key="`thumb-${i}`"
         :class="{ active: currentIndex === i }"
         @click="goToSlide(i)"
-        :style="{ backgroundImage: `url(${still.thumbnail})` }"
+        :style="{ backgroundImage: `url(${still.filename}/m/200x0)` }"
       >
       </div>
     </div>
@@ -39,49 +39,13 @@ const stillsContainer = ref(null)
 const currentIndex = ref(0)
 let loopTimeline = null
 
-// Sample still images - replace with your actual images
-const stillImages = ref([
-  {
-    image: 'https://picsum.photos/1920/1080?random=1',
-    thumbnail: 'https://picsum.photos/200/120?random=1'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=2',
-    thumbnail: 'https://picsum.photos/200/120?random=2'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=3',
-    thumbnail: 'https://picsum.photos/200/120?random=3'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=4',
-    thumbnail: 'https://picsum.photos/200/120?random=4'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=5',
-    thumbnail: 'https://picsum.photos/200/120?random=5'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=6',
-    thumbnail: 'https://picsum.photos/200/120?random=6'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=7',
-    thumbnail: 'https://picsum.photos/200/120?random=7'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=8',
-    thumbnail: 'https://picsum.photos/200/120?random=8'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=9',
-    thumbnail: 'https://picsum.photos/200/120?random=9'
-  },
-  {
-    image: 'https://picsum.photos/1920/1080?random=10',
-    thumbnail: 'https://picsum.photos/200/120?random=10'
+const props = defineProps({
+  stillsArray: {
+    type: Array,
+    required: true,
+    default: () => []
   }
-]);
+})
 
 const goToSlide = (index) => {
   if (loopTimeline) {

@@ -2,9 +2,9 @@
   <div>
     <div class="film-list text-lg text-center uppercase leading-[0.8]">
       <nuxt-link v-for="film in films.data.stories" :key="film._uid" class="film-item" :to="`/films/${film.slug}`">
-        <div class="film-item-data-primary text-left">Info 1</div>
-        <div class="film-item-data-title text-xl leading-[0.8]">{{ film.content.title}}</div>
-        <div class="film-item-data-secondary text-right">Info 2</div>
+        <div class="film-item-data-primary text-left pl-2">Info 1</div>
+        <div class="film-item-data-title text-xl leading-[0.8] text-balance">{{ film.content.title}}</div>
+        <div class="film-item-data-secondary text-right pr-2">Info 2</div>
       </nuxt-link>
     </div>
     <div class="py-(--xl) text-lg w-full uppercase text-center">
@@ -26,7 +26,7 @@ const films = await storyblokApi.get('cdn/stories/', {
 .film-list {
   .film-item {
     display: grid;
-    grid-template-columns: 20ch 1fr 20ch;
+    grid-template-columns: 12ch 1fr 12ch;
     border-bottom: 1px solid var(--color-black);
     padding: var(--sm) 0;
     overflow: hidden;
