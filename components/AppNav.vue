@@ -1,10 +1,9 @@
 <template>
-  <div class="app-nav p-(--sm) text-lg md:text-md uppercase leading-[0.9]">
+  <div class="app-nav p-(--sm) text-base md:text-md uppercase leading-[0.9]">
     <div class="logo">
       <nuxt-link to="/"><InauditaLogo/></nuxt-link>
-      <button class="toggle-nav" @click="toggleNav">+</button>
     </div>
-    <div class="app-nav-links text-center">
+    <div class="app-nav-links text-right md:text-center">
       <NuxtLink to="/films">Películas,</NuxtLink>
       <NuxtLink to="/in-development">En desarrollo,</NuxtLink>
       <NuxtLink to="/news">Noticias,</NuxtLink>
@@ -17,24 +16,6 @@
 <script setup>
 import gsap from 'gsap'
 import { onMounted } from 'vue'
-
-let navTl = null
-let isNavOpen = false
-
-function toggleNav() {
-  isNavOpen = !isNavOpen
-  if (isNavOpen) {
-    navTl.play()
-  } else {
-    navTl.reverse()
-  }
-}
-
-onMounted(() => {
-  navTl = gsap.timeline({ paused: true })
-  navTl.set('.app-nav-links', { display: 'flex'})
-  navTl.set('.app-nav-mail', { display: 'block'})
-})
 </script>
 
 <style lang="scss" scoped>
@@ -73,17 +54,10 @@ onMounted(() => {
 
 @media (max-width: 1000px) {
   .app-nav {
-    grid-template-columns: 1fr;
+    display: flex;
 
-    .toggle-nav {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: var(--color-black);
-      height: 1.75em;
-      width: 1.75em;
-      padding: var(--sm);
+    &-links {
+      justify-content: flex-end;
     }
 
     .logo {
@@ -93,19 +67,8 @@ onMounted(() => {
       align-items: center;
     }
 
-    .app-nav-links, .app-nav-mail {
+    .app-nav-mail {
       display: none;
-      padding-top: var(--sm);
-    }
-
-    .toggle-nav {
-      display: block;
-      background: none;
-      border: none;
-      color: var(--color-white);
-      font-size: 2rem;
-      line-height: 1;
-      cursor: pointer;
     }
   }
 }

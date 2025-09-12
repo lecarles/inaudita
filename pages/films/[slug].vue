@@ -97,8 +97,10 @@ useServerSeoMeta({
       border-top: 1px solid var(--color-white);
 
       img {
-        height: 4em;
-        width: 9em;
+        height: 5vw;
+        width: 10vw;
+        max-height: 200px;
+        max-width: 300px;
         object-fit: contain;
       }
     }
