@@ -2,14 +2,14 @@
   <div class="films-carousel text-white text-center uppercase">
     <div ref="stillsArr" v-for="(film, i) in films.data.stories" :key="i" class="still">
       <nuxt-link :to="`/films/${film.slug}`" class="still-link">
-        <div class="text-xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
+        <div class="w-full text-xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
         <div class="text-base z-1 leading-[0.9] mt-(--sm)">
-          <div class="flex justify-center gap-(--lg)">
-            <div>({{film.content.releaseDate.slice(0, 4)}})</div>
+          <div class="film-info gap-(--lg)">
+            <div class="text-left">({{film.content.releaseDate.slice(0, 4)}})</div>
             <div>{{film.content.shortText}}</div>
-            <div>{{film.content.duration}}’</div>
+            <div class="text-right">{{film.content.duration}}’</div>
           </div>
-          <div class="mt-1">
+          <div class="mt-3 md:mt-1">
             {{ film.content.longText }}
           </div>
         </div>
@@ -80,9 +80,15 @@ onMounted(() => {
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      padding: var(--lg);
+      padding: var(--lg) var(--sm);
       width: 100%;
       height: 100%;
+
+      .film-info {
+        display: grid;
+        grid-template-columns: 5ch 1fr 5ch;
+        gap: var(--md);
+      }
     }
 
     video {

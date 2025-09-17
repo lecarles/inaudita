@@ -5,9 +5,9 @@
         <video :src="`/video/${movie.data.story.content.video}`" autoplay loop playsinline muted v-if="movie.data.story.content.video"></video>
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else-if="movie.data.story.content.stills[0]">
       </div>
-      <div class="text-balance text-center md:text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
-      <div class="text-right text-md md:text-xl leading-[0.9] z-10">
-        <div>{{ movie.data.story.content.releaseDate.slice(0, 4)}}</div>
+      <div class="text-balance text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
+      <div class="flex mt-(--sm) md:mt-0 md:block text-right text-md md:text-xl leading-[0.9] z-10">
+        <div class="mr-auto">{{ movie.data.story.content.releaseDate.slice(0, 4)}}</div>
         <div>{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>
@@ -27,8 +27,11 @@
           <div class="film-credits-cast-names" v-html="renderRichText(movie.data.story.content.cast)"></div>
         </div>
       </div>
-      <div class="film-info-awards mt-(--lg)" v-if="movie.data.story.content.awards[0]">
-        <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
+      <div class="film-info-awards-wrapper">
+        <div class="uppercase text-base w-full">Premios</div>
+        <div class="film-info-awards mt-(--lg)" v-if="movie.data.story.content.awards[0]">
+          <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
+        </div>
       </div>
       <div class="film-info-gallery mt-(--md)">
         <still-gallery :stillsArray="movie.data.story.content.stills" v-if="movie.data.story.content.stills"/>
@@ -90,15 +93,29 @@ useServerSeoMeta({
     }
 
     &-awards {
-      min-height: calc(100svh - var(--nav-height) - var(--sm));
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: center;
-      border-top: 1px solid var(--color-white);
+      width: 100%;
+      margin: 0 auto;
+      align-items: center;
+      justify-items: center;
+      column-gap: 3em;
+      row-gap: 1.5em;
+
+      &-wrapper {
+        min-height: calc(100svh - var(--nav-height) - var(--sm));
+        border-top: 1px solid var(--color-white);
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        align-items: center;
+        justify-items: center;
+      }
 
       img {
-        height: 5vw;
-        width: 10vw;
+        height: 6vw;
+        width: 8vw;
         max-height: 200px;
         max-width: 300px;
         object-fit: contain;
@@ -148,6 +165,7 @@ useServerSeoMeta({
     .film-video {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
+      align-content: end;
     }
 
     .film-credits-secondary, .film-credits-cast {
@@ -157,6 +175,13 @@ useServerSeoMeta({
     .film-info {
       &-primary {
         grid-template-columns: 1fr;
+      }
+
+      &-awards {
+        img {
+          height: 100%;
+          width: 25%;
+        }
       }
     }
   }
