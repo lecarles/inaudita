@@ -3,7 +3,16 @@
     <div ref="stillsArr" v-for="(film, i) in films.data.stories" :key="i" class="still">
       <nuxt-link :to="`/films/${film.slug}`" class="still-link">
         <div class="text-xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
-        <div class="text-base z-1 leading-[0.9] mt-1">{{film.content.year}}{{film.content.duration}}</div>
+        <div class="text-base z-1 leading-[0.9] mt-(--sm)">
+          <div class="flex justify-center gap-(--lg)">
+            <div>({{film.content.releaseDate.slice(0, 4)}})</div>
+            <div>{{film.content.shortText}}</div>
+            <div>{{film.content.duration}}’</div>
+          </div>
+          <div class="mt-1">
+            {{ film.content.longText }}
+          </div>
+        </div>
         <video :src="`/video/${film.content.video}`" autoplay muted loop playsinline></video>
       </nuxt-link>
     </div>

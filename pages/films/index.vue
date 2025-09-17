@@ -4,6 +4,7 @@
       <img v-if="film.content.poster" :src="film.content.poster.filename" :alt="film.content.title" />
     </nuxt-link>
   </div>
+  <inaudita-footer />
 </template>
 
 <script setup>
@@ -17,7 +18,7 @@ const films = await storyblokApi.get('cdn/stories/', {
 
 <style lang="scss" scoped>
 .films-page {
-  margin: var(--nav-height) var(--sm) var(--sm);
+  margin: var(--nav-height) var(--sm) 0;
   background: var(--color-black);
   padding: var(--sm);
   display: grid;
