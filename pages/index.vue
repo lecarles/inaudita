@@ -25,6 +25,10 @@ const { story } = await useAsyncStoryblok('home', {
     version: 'draft'
   },
 })
+
+useServerSeoMeta({
+  title: 'Inaudita'
+})
 </script>
 
 <style lang="scss" scoped>

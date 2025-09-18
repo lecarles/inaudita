@@ -14,6 +14,10 @@ const films = await storyblokApi.get('cdn/stories/', {
   sort_by: 'content.releaseDate:desc',
   per_page: 40
 })
+
+useServerSeoMeta({
+  title: 'Inaudita - Películas'
+})
 </script>
 
 <style lang="scss" scoped>

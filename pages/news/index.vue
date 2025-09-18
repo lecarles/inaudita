@@ -15,6 +15,10 @@ const news = await storyblokApi.get('cdn/stories/', {
   starts_with: 'news',
   per_page: 20
 })
+
+useServerSeoMeta({
+  title: 'Inaudita - Noticias'
+})
 </script>
 
 <style lang="scss" scoped>
