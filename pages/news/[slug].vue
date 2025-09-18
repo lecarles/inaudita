@@ -55,6 +55,7 @@ useServerSeoMeta({
 
   .news-content {
     min-height: calc(100dvh - var(--nav-height) - var(--sm) * 2);
+    
     p {
       margin-bottom: var(--sm);
       max-width: 65ch;
