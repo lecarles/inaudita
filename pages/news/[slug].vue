@@ -2,7 +2,7 @@
   <div class="news-page">
     <div class="news-header">
       <div class="news-headline text-white text-xl leading-[0.9] uppercase">{{ news.data.story.content.headline }}</div>
-      <img :src="news.data.story.content.image.filename" alt="">
+      <img :src="news.data.story.content.image.filename + '/m/1200x0'" alt="">
     </div>
     <div class="news-content mt-(--sm) text-white bg-black py-(--lg) px-(--sm)">
       <div class="text-base uppercase mb-(--md)">{{ new Date(news.data.story.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
@@ -54,6 +54,7 @@ useServerSeoMeta({
   }
 
   .news-content {
+    min-height: calc(100dvh - var(--nav-height) - var(--sm) * 2);
     p {
       margin-bottom: var(--sm);
       max-width: 65ch;
