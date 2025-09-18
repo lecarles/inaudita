@@ -1,5 +1,5 @@
 <template>
-  <div class="app-nav p-(--sm) text-base md:text-md uppercase leading-[0.9]">
+  <div class="app-nav p-(--sm) text-md uppercase leading-[0.9]">
     <div class="logo">
       <nuxt-link to="/"><InauditaLogo/></nuxt-link>
     </div>
@@ -55,6 +55,7 @@ import { onMounted } from 'vue'
 @media (max-width: 1000px) {
   .app-nav {
     display: flex;
+    width: 100%;
 
     &-links {
       justify-content: flex-end;
