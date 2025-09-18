@@ -80,9 +80,9 @@ onMounted(() => {
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      padding: var(--lg) var(--sm);
       width: 100%;
       height: 100%;
+      padding: var(--lg) calc(var(--spacing) * 6);
 
       .film-info {
         display: grid;
