@@ -3,6 +3,7 @@
     <div class="film-video uppercase text-white">
       <div class="film-video-container">
         <video :src="`/video/${movie.data.story.content.video}`" autoplay loop playsinline muted v-if="movie.data.story.content.video"></video>
+        <img :src="movie.data.story.content.coverImage.filename" alt="" v-else-if="movie.data.story.content.coverImage">
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else-if="movie.data.story.content.stills[0]">
       </div>
       <div class="text-balance text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
@@ -20,9 +21,9 @@
         </div>
       </div>
       <div class="film-info-credits mt-(--md)">
-        <div v-if="movie.data.story.content.creditsPrimary" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>
-        <div v-if="movie.data.story.content.creditsSecondary" class="film-credits-secondary py-(--sm) mt-(--2xl)" v-html="renderRichText(movie.data.story.content.creditsSecondary)"></div>
-        <div v-if="movie.data.story.content.cast" class="film-credits-cast py-(--sm) my-(--xl)">
+        <div v-if="movie.data.story.content.creditsPrimary.content.length > 1" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>
+        <div v-if="movie.data.story.content.creditsSecondary.content.length > 1" class="film-credits-secondary py-(--sm) mt-(--2xl)" v-html="renderRichText(movie.data.story.content.creditsSecondary)"></div>
+        <div v-if="movie.data.story.content.cast.content.length > 1" class="film-credits-cast py-(--sm) my-(--xl)">
           <div class="uppercase text-base w-full">Reparto</div>
           <div class="film-credits-cast-names" v-html="renderRichText(movie.data.story.content.cast)"></div>
         </div>
@@ -33,8 +34,8 @@
           <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
         </div>
       </div>
-      <div class="film-info-gallery mt-(--md)">
-        <still-gallery :stillsArray="movie.data.story.content.stills" v-if="movie.data.story.content.stills"/>
+      <div class="film-info-gallery mt-(--md)" v-if="movie.data.story.content.stills.length > 1">
+        <still-gallery :stillsArray="movie.data.story.content.stills"/>
       </div>
     </div>
   </div>
@@ -83,6 +84,11 @@ const props = defineProps({
 
   .film-info {
     background: var(--color-black);
+    min-height: 100dvh;
+
+    div:last-child:not(.film-info-gallery) {
+      padding-bottom: var(--lg);
+    }
 
     &-primary {
       display: grid;

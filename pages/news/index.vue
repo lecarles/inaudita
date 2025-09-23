@@ -3,7 +3,7 @@
     <nuxt-link :to="`/news/${article.slug}`" class="text-white" v-for="article in news.data.stories" :key="article._uid">
       <img :src="article.content.image.filename + '/m/600x0'" alt="">
       <div class="text-base uppercase mt-(--sm)">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
-      <div class="text-lg uppercase mt-(--sm) leading-[0.9]">{{article.content.headline}}</div>
+      <div class="text-lg uppercase leading-[0.9]">{{article.content.headline}}</div>
     </nuxt-link>
   </div>
   <inaudita-footer />

@@ -1,9 +1,9 @@
 <template>
   <div class="in-dev-index">
     <nuxt-link :to="`/in-development/${film.slug}`" class="text-white" v-for="film in sortedFilms" :key="film._uid">
-      <img v-if="film.content.image" :src="film.content.image.filename + '/m/600x0'" alt="">
+      <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
       <div class="text-base uppercase mt-(--sm)">{{ film.content.state }}</div>
-      <div class="text-lg uppercase mt-(--sm) leading-[0.9] text-balance">{{film.content.title}}</div>
+      <div class="text-lg uppercase leading-[0.9] text-balance">{{film.content.title}}</div>
     </nuxt-link>
   </div>
   <inaudita-footer />
