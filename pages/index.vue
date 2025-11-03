@@ -6,9 +6,9 @@
     </div>
     <film-list />
     <div class="home-footer text-white">
-      <div class="text-md mb-auto">
-        <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>,
-        <a href="https://facebook.com/" target="_blank" rel="noopener">FACEBOOK</a>,
+      <div class="text-md mb-auto flex uppercase gap-(--md)">
+        <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a>
         <a href="https://youtube.com/" target="_blank" rel="noopener">YOUTUBE</a>
       </div>
       <div class="text-base p-(--md) uppercase leading-[0.9]">

@@ -1,30 +1,32 @@
 <template>
   <div class="still-gallery">
-    <div class="main-gallery">
+    <div class="stills-grid">
       <div 
-        ref="stillsContainer" 
-        class="stills-container"
+        v-for="(still, i) in stillsArray" 
+        :key="i"
+        class="still-item"
+        :class="{ 'active': selectedStill === i }"
+        @click="selectStill(i)"
+        :style="{ backgroundImage: `url(${still.filename}/m/800x0)` }"
       >
-        <div 
-          ref="stills"
-          class="still" 
-          v-for="(still, i) in stillsArray" 
-          :key="i"
-          :style="{ backgroundImage: `url(${still.filename}/m/1500x0)` }"
-        >
-        </div>
       </div>
     </div>
-    
-    <div class="still-gallery-controls">
-      <div 
-        class="still-thumbnail"
-        v-for="(still, i) in stillsArray"
-        :key="`thumb-${i}`"
-        :class="{ active: currentIndex === i }"
-        @click="goToSlide(i)"
-        :style="{ backgroundImage: `url(${still.filename}/m/200x0)` }"
-      >
+
+    <!-- Fullscreen overlay -->
+    <div 
+      v-if="selectedStill !== null" 
+      class="fullscreen-overlay"
+      @click="closeFullscreen"
+    >
+      <div class="fullscreen-container">
+        <div 
+          class="fullscreen-still"
+          :style="{ backgroundImage: `url(${stillsArray[selectedStill].filename}/m/1920x0)` }"
+        >
+          <button class="close-btn text-regular text-lg" @click="closeFullscreen">×</button>
+          <button class="nav-btn prev" @click.stop="previousStill" v-if="stillsArray.length > 1">←</button>
+          <button class="nav-btn next" @click.stop="nextStill" v-if="stillsArray.length > 1">→</button>
+        </div>
       </div>
     </div>
   </div>
@@ -32,12 +34,8 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import horizontalLoop from '~/helpers/horizontalLoop.js';
 
-const stills = ref(null)
-const stillsContainer = ref(null)
-const currentIndex = ref(0)
-let loopTimeline = null
+const selectedStill = ref(null);
 
 const props = defineProps({
   stillsArray: {
@@ -47,121 +45,232 @@ const props = defineProps({
   }
 })
 
-const goToSlide = (index) => {
-  if (loopTimeline) {
-    loopTimeline.toIndex(index, { duration: 0.8, ease: "power2.out" });
+const selectStill = (index) => {
+  selectedStill.value = index
+  document.body.style.overflow = 'hidden' // Prevent background scrolling
+}
+
+const closeFullscreen = () => {
+  selectedStill.value = null;
+  document.body.style.overflow = '' // Restore scrolling
+}
+
+const nextStill = () => {
+  if (selectedStill.value < props.stillsArray.length - 1) {
+    selectedStill.value++
+  } else {
+    selectedStill.value = 0 // Loop to first
+  }
+}
+
+const previousStill = () => {
+  if (selectedStill.value > 0) {
+    selectedStill.value--
+  } else {
+    selectedStill.value = props.stillsArray.length - 1; // Loop to last
+  }
+}
+
+// Keyboard navigation
+const handleKeydown = (e) => {
+  if (selectedStill.value === null) return;
+  
+  switch (e.key) {
+    case 'Escape':
+      closeFullscreen();
+      break;
+    case 'ArrowRight':
+      nextStill();
+      break;
+    case 'ArrowLeft':
+      previousStill();
+      break;
   }
 };
 
 onMounted(() => {
-  if (stills.value && stills.value.length) {
-    loopTimeline = horizontalLoop(stills.value, {
-      center: true,
-      paused: true,
-      onChange: (element, index) => {
-        currentIndex.value = index;
-      }
-    });
-  }
+  window.addEventListener('keydown', handleKeydown);
 });
 
 onBeforeUnmount(() => {
-  if (loopTimeline) {
-    loopTimeline.kill();
-  }
+  window.removeEventListener('keydown', handleKeydown);
+  document.body.style.overflow = ''; // Cleanup
 });
 </script>
 
 <style lang="scss" scoped>
 .still-gallery {
-  display: flex;
-  flex-direction: column;
-  height: calc(100dvh - var(--nav-height) - var(--sm));
-}
-
-.main-gallery {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.stills-container {
-  display: flex;
-  height: 100%;
+  padding: var(--lg) 0;
   width: 100%;
+  min-height: 100dvh;
+  margin: auto;
 }
 
-.still {
-  flex-shrink: 0;
+.stills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--sm);
+  padding: var(--sm);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--md);
+    padding: var(--md);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.still-item {
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.fullscreen-container {
+  width: 95vw;
+  height: 95vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-still {
+  width: 100%;
   height: 100%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 8px;
 }
 
-.still-gallery-controls {
-  display: flex;
-  gap: 0.5rem;
-  padding: 1rem;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-}
-
-.still-thumbnail {
-  flex-shrink: 0;
-  width: clamp(80px, 4vw, 140px);
-  height: auto;
-  aspect-ratio: 16/9;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid transparent;
+.close-btn {
+  position: absolute;
+  top: var(--sm);
+  right: var(--sm);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
   cursor: pointer;
-  position: relative;
-  transition: all 0.1s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  &:hover {
-    border-color: var(--color-white);
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &.prev {
+    left: var(--md);
+
+    &:hover {
+      transform: translateY(-50%) translateX(-6%);
+    }
   }
-  
-  &.active {
-    border-color: var(--color-white);
+
+  &.next {
+    right: var(--md);
+    
+    &:hover {
+      transform: translateY(-50%) translateX(6%);
+    }
   }
 }
 
-// Mobile responsive adjustments
+.still-counter {
+  position: absolute;
+  bottom: var(--sm);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: var(--xs) var(--sm);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Mobile specific styles
 @media (max-width: 768px) {
-  .still {
-    .still-number {
-      top: 1rem;
-      left: 1rem;
-      padding: 0.3rem 0.6rem;
-      font-size: 1rem;
+  .stills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--xs);
+    padding: var(--xs);
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+
+    &.prev {
+      left: var(--sm);
+    }
+
+    &.next {
+      right: var(--sm);
     }
   }
-  
-  .still-gallery-controls {
-    padding: 0.5rem;
-    gap: 0.3rem;
-  }
-  
-  .still-thumbnail {
-    width: 60px;
-    height: 36px;
-    
-    span {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.3rem;
-    }
+
+  .close-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
 }
 </style>

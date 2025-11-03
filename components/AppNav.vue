@@ -3,13 +3,12 @@
     <div class="logo">
       <nuxt-link to="/"><InauditaLogo/></nuxt-link>
     </div>
-    <div class="app-nav-links text-right md:text-center">
-      <NuxtLink to="/films">Películas,</NuxtLink>
-      <NuxtLink to="/in-development">En desarrollo,</NuxtLink>
-      <NuxtLink to="/news">Noticias,</NuxtLink>
+    <div class="app-nav-links ml-auto text-right">
+      <NuxtLink to="/films">Películas</NuxtLink>
+      <NuxtLink to="/in-development">En desarrollo</NuxtLink>
+      <NuxtLink to="/news">Noticias</NuxtLink>
       <NuxtLink to="/about">Nosotros</NuxtLink>
     </div>
-    <div class="app-nav-mail text-center md:text-right"><a href="mailto:info@inauditafilms.com">info@<br class="hidden md:block">inauditafilms.com</a></div>
   </div>
 </template>
 
@@ -20,8 +19,7 @@ import { onMounted } from 'vue'
 
 <style lang="scss" scoped>
 .app-nav {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   background: var(--color-red);
   position: fixed;
   top: 0;
@@ -36,8 +34,8 @@ import { onMounted } from 'vue'
     display: flex;
     max-width: 25ch;
     flex-wrap: wrap;
-    justify-content: center;
-    column-gap: var(--xs)
+    justify-content: flex-end;
+    column-gap: .65em;
   }
 
   &-mail {

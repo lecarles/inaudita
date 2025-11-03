@@ -1,12 +1,9 @@
 <template>
   <div class="inaudita-footer text-md p-(--sm)">
-    <div>(C) INAUDITA 2025</div>
-    <div class="ml-auto text-right">
-      <div>
-        <a href="https://instagram.com/inauditafilms/" target="_blank" rel="noopener">Instagram</a>,
-        <a href="https://facebook.com/inauditafilms/" target="_blank" rel="noopener">Facebook</a>,
+    <div><a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a></div>
+    <div class="ml-auto text-right flex gap-(--sm)">
+        <a href="https://instagram.com/inauditafilms/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@inauditafilms/" target="_blank" rel="noopener">Youtube</a>
-      </div>
     </div>
   </div>
 </template>

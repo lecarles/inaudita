@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Satoshi-Black", sans-serif;
+  --font-regular: "Satoshi-Medium", sans-serif;
   --color-black: #000;
   --color-red: #F20000;
   --color-yellow: #FFD10A;
@@ -68,6 +69,16 @@ body {
        url('../fonts/Satoshi-Black.woff') format('woff'),
        url('../fonts/Satoshi-Black.ttf') format('truetype');
   font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi-Medium';
+  src: url('../fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('../fonts/Satoshi-Medium.woff') format('woff'),
+       url('../fonts/Satoshi-Medium.ttf') format('truetype');
+  font-weight: 400;
   font-display: swap;
   font-style: normal;
 }

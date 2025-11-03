@@ -24,11 +24,11 @@ useServerSeoMeta({
 .films-page {
   margin: var(--nav-height) var(--sm) 0;
   background: var(--color-black);
-  padding: var(--sm);
+  padding: var(--md);
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(400px, 1fr) );
+  grid-template-columns: repeat( auto-fill, minmax(360px, 1fr) );
   grid-template-rows: auto;
-  gap: var(--sm);
+  gap: var(--md);
 
   .film-item {
     background: var(--color-white);

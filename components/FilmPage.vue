@@ -12,26 +12,28 @@
         <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>
-    <div class="film-info text-white px-(--sm) pt-(--md) mt-(--sm)">
-      <div class="film-info-primary">
-        <div class="film-info-description text-md leading-[1.1]">
-          {{ movie.data.story.content.summary }}
+    <div class="film-info text-white px-(--md) pt-(--md) mt-(--sm)">
+      <div class="grid md:grid-cols-2 gap-(--md)">
+        <div>
+          <div class="film-info-description text-base font-regular leading-[1.1]">
+            {{ movie.data.story.content.summary }}
+          </div>
+          <div class="film-info-links text-md uppercase" v-html="renderRichText(movie.data.story.content.links)">
+          </div>
         </div>
-        <div class="film-info-links text-md uppercase" v-html="renderRichText(movie.data.story.content.links)">
-        </div>
-      </div>
-      <div class="film-info-credits mt-(--md)">
-        <div v-if="movie.data.story.content.creditsPrimary.content.length > 1" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>
-        <div v-if="movie.data.story.content.creditsSecondary.content.length > 1" class="film-credits-secondary py-(--sm) mt-(--2xl)" v-html="renderRichText(movie.data.story.content.creditsSecondary)"></div>
-        <div v-if="movie.data.story.content.cast.content.length > 1" class="film-credits-cast py-(--sm) my-(--xl)">
-          <div class="uppercase text-base w-full">Reparto</div>
-          <div class="film-credits-cast-names" v-html="renderRichText(movie.data.story.content.cast)"></div>
-        </div>
-      </div>
-      <div class="film-info-awards-wrapper" v-if="movie.data.story.content.awards[0]">
-        <div class="uppercase text-base w-full">Premios</div>
-        <div class="film-info-awards mt-(--lg)" v-if="movie.data.story.content.awards[0]">
-          <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
+        <div class="film-info-credits text-base font-regular">
+          <div v-if="movie.data.story.content.creditsPrimary.content.length > 1" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>
+          <div v-if="movie.data.story.content.creditsSecondary.content.length > 1" class="film-credits-secondary py-(--sm) mt-(--md)" v-html="renderRichText(movie.data.story.content.creditsSecondary)"></div>
+          <div v-if="movie.data.story.content.cast.content.length > 1" class="film-credits-cast py-(--sm) mt-(--md)">
+            <div class="text-base w-full mb-(--sm)">Reparto</div>
+            <div class="film-credits-cast-names flex gap-(--sm)" v-html="renderRichText(movie.data.story.content.cast)"></div>
+          </div>
+          <div class="film-info-awards-wrapper mt-(--md)" v-if="movie.data.story.content.awards[0]">
+            <div class="text-base w-full font-regular">Premios</div>
+            <div class="film-info-awards" v-if="movie.data.story.content.awards[0]">
+              <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
+            </div>
+          </div>
         </div>
       </div>
       <div class="film-info-gallery mt-(--md)" v-if="movie.data.story.content.stills.length > 1">
@@ -86,41 +88,42 @@ const props = defineProps({
     background: var(--color-black);
     min-height: 100dvh;
 
-    div:last-child:not(.film-info-gallery) {
-      padding-bottom: var(--lg);
-    }
-
     &-primary {
       display: grid;
       grid-template-columns: 3fr 1fr;
     }
 
+    &-links {
+      display: flex;
+      gap: var(--sm);
+      margin-top: var(--md);
+      flex-wrap: wrap;
+
+      a {
+        border: 1px solid var(--color-white);
+        padding: var(--xs) var(--sm);
+      }
+    }
+
     &-awards {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       width: 100%;
       margin: 0 auto;
-      align-items: center;
-      justify-items: center;
       column-gap: 3em;
       row-gap: 1.5em;
+      padding-top: var(--sm);
 
       &-wrapper {
-        min-height: calc(100svh - var(--nav-height) - var(--sm));
         border-top: 1px solid var(--color-white);
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        align-items: center;
-        justify-items: center;
       }
 
       img {
-        height: 6vw;
-        width: 8vw;
+        height: 4vw;
+        width: 7vw;
         max-height: 200px;
-        max-width: 300px;
+        max-width: 350px;
         object-fit: contain;
       }
     }
@@ -137,13 +140,8 @@ const props = defineProps({
   } 
 
   .film-credits-secondary, .film-credits-cast-names {
-    column-count: 3;
-
     p {
       margin-bottom: var(--sm);
-      -webkit-column-break-inside: avoid;
-      page-break-inside: avoid;
-      break-inside: avoid-column;
     }
   }
 
@@ -153,12 +151,19 @@ const props = defineProps({
     }
 
     p {
-      font-size: var(--text-md);
+      font-family: var(--font-sans);
+      display: flex;
+      gap: .65em;
     }
 
     strong {
+      font-family: var(--font-regular);
       font-size: var(--text-base);
-      text-transform: uppercase;
+      font-weight: 500;
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
   }
 }
