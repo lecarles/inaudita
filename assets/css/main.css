@@ -15,7 +15,8 @@
   --text-xl: clamp(2.5rem, 4.5vi + 2rem, 12rem);
   --text-2xl: clamp(3rem, 5.5vi + 2rem, 14rem);
   --xs: calc(var(--spacing));
-  --sm: calc(var(--spacing) * 3);
+  --sm: calc(var(--spacing) * 4);
+  --base: calc(var(--spacing) * 8);
   --md: calc(var(--spacing) * 12);
   --lg: calc(var(--spacing) * 30);
   --xl: calc(var(--spacing) * 60);
@@ -59,7 +60,8 @@ html {
 }
 
 body {
-  background-color: var(--color-red);
+  color: var(--color-white);
+  background-color: var(--color-black);
   letter-spacing: -0.025em;
 }
 

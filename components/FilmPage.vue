@@ -12,7 +12,7 @@
         <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>
-    <div class="film-info text-white px-(--md) pt-(--md) mt-(--sm)">
+    <div class="film-info text-white px-(--sm) pt-(--md) mt-(--sm)">
       <div class="grid md:grid-cols-2 gap-(--md)">
         <div>
           <div class="film-info-description text-base font-regular leading-[1.1]">

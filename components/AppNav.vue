@@ -20,7 +20,8 @@ import { onMounted } from 'vue'
 <style lang="scss" scoped>
 .app-nav {
   display: flex;
-  background: var(--color-red);
+  background: var(--color-black);
+  color: var(--color-white);
   position: fixed;
   top: 0;
   width: 100%;
