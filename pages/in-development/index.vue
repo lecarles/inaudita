@@ -1,6 +1,6 @@
 <template>
   <div class="in-dev-index p-(--md) md:py-(--md) md:px-(--xl)">
-    <nuxt-link :to="`/in-development/${film.slug}`" class="text-white" v-for="film in sortedFilms" :key="film._uid">
+    <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
       <div class="text-base uppercase mt-(--sm)">{{ film.content.state }}</div>
       <div class="text-lg uppercase leading-[0.9] text-balance">{{film.content.title}}</div>
@@ -44,7 +44,7 @@ useServerSeoMeta({
 <style lang="scss" scoped>
 .in-dev-index {
   margin: var(--nav-height) auto var(--xl);
-  background: var(--color-black);
+  background: var(--color-background);
   display: grid;
   grid-template-columns: repeat( auto-fill, minmax(500px, 1fr));
   grid-template-rows: auto;

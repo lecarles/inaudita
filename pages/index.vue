@@ -1,11 +1,11 @@
 <template>
   <div class="inaudita-home">
     <films-carousel />
-    <div class="film-list text-center">
+    <div class="film-list text-center bg-red p-(--sm) mt-(--sm)">
       <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-xl md:text-2xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
-    </div>
     <film-list />
-    <div class="home-footer text-white">
+    </div>
+    <div class="home-footer text-white bg-black mt-(--sm)">
       <div class="text-md mb-auto flex uppercase gap-(--md)">
         <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>
         <a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a>
@@ -39,8 +39,6 @@ useServerSeoMeta({
   .home-footer {
     text-align: center;
     padding: var(--sm);
-    background: var(--color-red);
-    color: var(--color-black);
     height: calc(100dvh - var(--nav-height) - var(--sm));
     display: flex;
     flex-direction: column;

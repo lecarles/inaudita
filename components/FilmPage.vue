@@ -85,7 +85,7 @@ const props = defineProps({
   }
 
   .film-info {
-    min-height: 100dvh;
+    min-height: 50dvh;
 
     &-primary {
       display: grid;
@@ -124,6 +124,7 @@ const props = defineProps({
         max-height: 200px;
         max-width: 350px;
         object-fit: contain;
+        filter: grayscale(1) invert(1);
       }
     }
   }

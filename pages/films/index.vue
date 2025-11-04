@@ -23,7 +23,7 @@ useServerSeoMeta({
 <style lang="scss" scoped>
 .films-page {
   margin: var(--nav-height) auto 0;
-  background: var(--color-black);
+  background: var(--color-background);
   display: grid;
   grid-template-columns: repeat( auto-fill, minmax(320px, 1fr));
   grid-template-rows: auto;
@@ -31,7 +31,7 @@ useServerSeoMeta({
   max-width: 2400px;
 
   .film-item {
-    background: var(--color-white);
+    background: var(--color-foreground);
     aspect-ratio: 1 / 1.4;
 
     img {

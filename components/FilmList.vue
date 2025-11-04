@@ -27,14 +27,13 @@ const films = await storyblokApi.get('cdn/stories/', {
   .film-item {
     display: grid;
     grid-template-columns: 12ch 1fr 12ch;
-    border-bottom: 1px solid var(--color-white);
-    padding: var(--sm) 0;
+    border-top: 1px solid var(--color-black);
+    padding: var(--sm);
     overflow: hidden;
 
     &:hover {
-      background: var(--color-red);
-      color: var(--color-black);
-      border-radius: .25rem;
+      background-color: var(--color-black);
+      color: var(--color-white);
     }
 
     &:last-child {

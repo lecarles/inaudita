@@ -4,7 +4,7 @@
       <div class="news-headline text-white text-xl leading-[0.9] uppercase">{{ news.data.story.content.headline }}</div>
       <img :src="news.data.story.content.image.filename + '/m/1200x0'" alt="">
     </div>
-    <div class="news-content mt-(--sm) text-white bg-black py-(--lg) px-(--sm)">
+    <div class="news-content mt-(--sm) text-foreground bg-bacgkround py-(--lg) grid md:grid-cols-2 gap-(--md)">
       <div class="text-base uppercase mb-(--md)">{{ new Date(news.data.story.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
       <div v-html="renderRichText(news.data.story.content.body)"></div>
     </div>
@@ -62,6 +62,7 @@ useServerSeoMeta({
       font-size: var(--text-md);
       line-height: 1.1;
       text-wrap: pretty;
+      font-family: var(--font-regular);
 
       &:last-child {
         margin-bottom: 0;
