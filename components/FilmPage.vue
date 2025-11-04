@@ -12,7 +12,7 @@
         <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>
-    <div class="film-info text-white px-(--sm) pt-(--md) mt-(--sm)">
+    <div class="film-info bg-white text-black px-(--sm) pt-(--md) mt-(--sm)">
       <div class="grid md:grid-cols-2 gap-(--md)">
         <div>
           <div class="film-info-description text-base font-regular leading-[1.1]">
@@ -85,7 +85,6 @@ const props = defineProps({
   }
 
   .film-info {
-    background: var(--color-black);
     min-height: 100dvh;
 
     &-primary {
@@ -100,7 +99,7 @@ const props = defineProps({
       flex-wrap: wrap;
 
       a {
-        border: 1px solid var(--color-white);
+        border: 1px solid var(--color-black);
         padding: var(--xs) var(--sm);
       }
     }
@@ -115,7 +114,7 @@ const props = defineProps({
       padding-top: var(--sm);
 
       &-wrapper {
-        border-top: 1px solid var(--color-white);
+        border-top: 1px solid var(--color-black);
         display: grid;
       }
 
@@ -136,7 +135,7 @@ const props = defineProps({
   }
  
   .film-credits-secondary, .film-credits-cast {
-    border-top: 1px solid var(--color-white);
+    border-top: 1px solid var(--color-black);
   } 
 
   .film-credits-secondary, .film-credits-cast-names {
@@ -147,7 +146,7 @@ const props = defineProps({
 
   .film-credits-primary, .film-credits-secondary, .film-credits-cast {
     p span {
-      color: var(--color-white) !important;
+      color: var(--color-black) !important;
     }
 
     p {

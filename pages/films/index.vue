@@ -1,5 +1,5 @@
 <template>
-  <div class="films-page">
+  <div class="films-page p-(--md) md:py-(--md) md:px-(--xl)">
     <nuxt-link v-for="film in films.data.stories" class="film-item" :key="film._uid" :to="`/films/${film.slug}`">
       <img v-if="film.content.poster" :src="film.content.poster.filename" :alt="film.content.title" />
     </nuxt-link>
@@ -22,13 +22,13 @@ useServerSeoMeta({
 
 <style lang="scss" scoped>
 .films-page {
-  margin: var(--nav-height) var(--sm) 0;
+  margin: var(--nav-height) auto 0;
   background: var(--color-black);
-  padding: var(--md);
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(360px, 1fr) );
+  grid-template-columns: repeat( auto-fill, minmax(320px, 1fr));
   grid-template-rows: auto;
-  gap: var(--md);
+  gap: var(--lg);
+  max-width: 2400px;
 
   .film-item {
     background: var(--color-white);

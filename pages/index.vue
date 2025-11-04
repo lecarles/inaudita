@@ -39,7 +39,8 @@ useServerSeoMeta({
   .home-footer {
     text-align: center;
     padding: var(--sm);
-    background: var(--color-black);
+    background: var(--color-red);
+    color: var(--color-black);
     height: calc(100dvh - var(--nav-height) - var(--sm));
     display: flex;
     flex-direction: column;
