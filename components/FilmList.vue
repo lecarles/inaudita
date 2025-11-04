@@ -29,6 +29,7 @@ const films = await storyblokApi.get('cdn/stories/', {
     grid-template-columns: 12ch 1fr 12ch;
     border-top: 1px solid var(--color-black);
     padding: var(--sm);
+    color: var(--color-black);
     overflow: hidden;
 
     &:hover {

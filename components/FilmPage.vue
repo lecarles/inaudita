@@ -12,10 +12,10 @@
         <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
       </div>
     </div>
-    <div class="film-info bg-white text-black px-(--sm) pt-(--md) mt-(--sm)">
-      <div class="grid md:grid-cols-2 gap-(--md)">
-        <div>
-          <div class="film-info-description text-base font-regular leading-[1.1]">
+    <div class="film-info mt-(--sm)">
+      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--lg) px-(--lg)">
+        <div class="px-(--sm) md:pl-(--sm) md:pr-(--md)">
+          <div class="film-info-description text-md font-regular leading-[1.1]">
             {{ movie.data.story.content.summary }}
           </div>
           <div class="film-info-links text-md uppercase" v-html="renderRichText(movie.data.story.content.links)">
@@ -29,7 +29,7 @@
             <div class="film-credits-cast-names flex gap-(--sm)" v-html="renderRichText(movie.data.story.content.cast)"></div>
           </div>
           <div class="film-info-awards-wrapper mt-(--md)" v-if="movie.data.story.content.awards[0]">
-            <div class="text-base w-full font-regular">Premios</div>
+            <div class="text-base w-full font-regular pt-(--sm)">Premios</div>
             <div class="film-info-awards" v-if="movie.data.story.content.awards[0]">
               <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
             </div>
@@ -145,15 +145,37 @@ const props = defineProps({
     }
   }
 
-  .film-credits-primary, .film-credits-secondary, .film-credits-cast {
+  .film-credits-cast {
+    p span {
+      color: var(--color-black) !important;
+    }
+
+    p {
+      display: flex;
+      gap: var(--sm);
+      font-family: var(--font-sans);
+    }
+  }
+
+  .film-credits-primary, .film-credits-secondary {
     p span {
       color: var(--color-black) !important;
     }
 
     p {
       font-family: var(--font-sans);
-      display: flex;
-      gap: .65em;
+      display: grid;
+      gap: .5em;
+      padding-left: calc(15ch + .5em);
+
+      &:has(*:not(:empty)) {
+        grid-template-columns: 15ch 1fr;
+        padding-left: 0;
+      }
+
+      br {
+        display: none;
+      }
     }
 
     strong {
@@ -161,6 +183,7 @@ const props = defineProps({
       font-size: var(--text-base);
       font-weight: 500;
       text-transform: lowercase;
+
       &::first-letter {
         text-transform: uppercase;
       }

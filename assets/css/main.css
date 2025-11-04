@@ -9,8 +9,9 @@
   --color-purple: #7D00FF;
   --color-orange: #FF5400;
   --color-white: #f6f6f6;
-  --color-background: var(--color-white);
-  --color-foreground: var(--color-black);
+  --color-gray: #e5e5e5;
+  --color-background: var(--color-black);
+  --color-foreground: var(--color-white);
   --text-sm: clamp(0.8rem, 1vi + 0.2rem, 1.25rem);
   --text-base: clamp(1rem, 1vi + 0.3rem, 1.75rem);
   --text-md: clamp(1.2rem, 1vi + 0.6rem, 2.25rem);
@@ -62,8 +63,8 @@ html {
 }
 
 body {
-  color: var(--color-black);
-  background-color: var(--color-white);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
   letter-spacing: -0.025em;
 }
 
