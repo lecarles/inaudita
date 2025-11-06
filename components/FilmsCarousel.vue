@@ -47,12 +47,17 @@ onMounted(() => {
     defaults: { duration: 0.02, ease: 'none' },
   })
   gsap.set(stillsArr.value[0], { opacity: 1 })
+  gsap.set(stillsArr.value[0], { zIndex: 1 })
   for (let i = 1; i < stillsArr.value.length; i++) {
     stillsTl.to(stillsArr.value[i], { opacity: 1 }, '<11.5')
+    stillsTl.set(stillsArr.value[i], { zIndex: 1 }, '<')
     stillsTl.to(stillsArr.value[i-1], { opacity: 0 }, '<0.01')
+    stillsTl.set(stillsArr.value[i-1], { zIndex: 0 }, '<')
   }
   stillsTl.to(stillsArr.value[0], { opacity: 1 }, '<11.5')
+  stillsTl.set(stillsArr.value[0], { zIndex: 1 }, '<')
   stillsTl.to(stillsArr.value[stillsArr.value.length - 1], { opacity: 0 }, '<0.01')
+  stillsTl.set(stillsArr.value[stillsArr.value.length - 1], { zIndex: 0 }, '<')
 })
 
 </script>
@@ -83,6 +88,7 @@ onMounted(() => {
       width: 100%;
       height: 100%;
       padding: var(--lg) calc(var(--spacing) * 6);
+      z-index: 0;
 
       .film-info {
         display: grid;
