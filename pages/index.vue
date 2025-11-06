@@ -1,12 +1,12 @@
 <template>
   <div class="inaudita-home">
     <films-carousel />
-    <div class="film-list text-center bg-red p-(--sm) mt-(--sm) text-black">
+    <div class="film-list text-center p-(--sm) mt-(--sm)">
       <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-xl md:text-2xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
     <film-list />
     </div>
-    <div class="home-footer text-black bg-gray mt-(--sm)">
-      <div class="text-md mb-auto flex uppercase gap-(--md)">
+    <div class="home-footer text-black bg-red mt-(--sm)">
+      <div class="text-md mb-auto flex uppercase gap-x-(--md) flex-wrap leading-[0.9] justify-center">
         <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>
         <a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a>
         <a href="https://youtube.com/" target="_blank" rel="noopener">YOUTUBE</a>

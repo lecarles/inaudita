@@ -1,12 +1,12 @@
 <template>
-  <div class="app-nav p-(--sm) text-md uppercase leading-[0.9]">
+  <div class="app-nav p-(--sm) md:text-md text-base uppercase leading-[0.9]">
     <div class="logo">
       <nuxt-link to="/"><InauditaLogo/></nuxt-link>
     </div>
     <div class="app-nav-links ml-auto text-right">
-      <NuxtLink to="/films">Películas</NuxtLink>
+      <NuxtLink to="/films">Películas</NuxtLink>/
       <NuxtLink to="/in-development">En desarrollo</NuxtLink>
-      <NuxtLink to="/news">Noticias</NuxtLink>
+      <NuxtLink to="/news">Noticias</NuxtLink>/
       <NuxtLink to="/about">Nosotros</NuxtLink>
     </div>
   </div>
@@ -24,7 +24,7 @@ import { onMounted } from 'vue'
   color: var(--color-foreground);
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 20;
 
   .toggle-nav {
@@ -36,7 +36,7 @@ import { onMounted } from 'vue'
     max-width: 25ch;
     flex-wrap: wrap;
     justify-content: flex-end;
-    column-gap: .65em;
+    column-gap: .25em;
   }
 
   &-mail {

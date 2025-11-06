@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="film-info mt-(--sm)">
-      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--lg) px-(--lg)">
-        <div class="px-(--sm) md:pl-(--sm) md:pr-(--md)">
+      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--lg) px-(--sm) md:px-(--lg)">
+        <div class="md:px-(--sm) md:pl-(--sm) md:pr-(--md)">
           <div class="film-info-description text-md font-regular leading-[1.1]">
             {{ movie.data.story.content.summary }}
           </div>
@@ -112,6 +112,8 @@ const props = defineProps({
       column-gap: 3em;
       row-gap: 1.5em;
       padding-top: var(--sm);
+      height: fit-content;
+      align-items: center;
 
       &-wrapper {
         border-top: 1px solid var(--color-black);
@@ -120,7 +122,8 @@ const props = defineProps({
 
       img {
         height: 4vw;
-        width: 7vw;
+        width: 9vw;
+        min-width: 120px;
         max-height: 200px;
         max-width: 350px;
         object-fit: contain;

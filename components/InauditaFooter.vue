@@ -1,7 +1,7 @@
 <template>
   <div class="inaudita-footer text-md p-(--sm)">
     <div><a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a></div>
-    <div class="ml-auto text-right flex gap-(--sm)">
+    <div class="md:ml-auto text-right flex gap-(--sm)">
         <a href="https://instagram.com/inauditafilms/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@inauditafilms/" target="_blank" rel="noopener">Youtube</a>
     </div>
@@ -18,6 +18,8 @@
   width: 100%;
   text-transform: uppercase;
   line-height: .9;
+  flex-wrap: wrap;
+  justify-items: center;
 
   svg {
     height: 1.75em;

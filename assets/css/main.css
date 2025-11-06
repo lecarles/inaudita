@@ -12,9 +12,9 @@
   --color-gray: #e5e5e5;
   --color-background: var(--color-black);
   --color-foreground: var(--color-white);
-  --text-sm: clamp(0.8rem, 1vi + 0.2rem, 1.25rem);
-  --text-base: clamp(1rem, 1vi + 0.3rem, 1.75rem);
-  --text-md: clamp(1.2rem, 1vi + 0.6rem, 2.25rem);
+  --text-sm: clamp(0.8rem, 1vi + 0.2rem, 1.15rem);
+  --text-base: clamp(1rem, 1vi + 0.3rem, 1.65rem);
+  --text-md: clamp(1.2rem, 1vi + 0.6rem, 2rem);
   --text-lg: clamp(1.35rem, 1vi + 0.8rem, 3rem);
   --text-xl: clamp(2.5rem, 4.5vi + 2rem, 12rem);
   --text-2xl: clamp(3rem, 5.5vi + 2rem, 14rem);
