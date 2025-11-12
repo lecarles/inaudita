@@ -1,7 +1,9 @@
 <template>
   <div class="app-nav p-(--sm) text-md uppercase leading-[0.9]">
     <div class="logo">
-      <nuxt-link to="/"><InauditaLogo/></nuxt-link>
+      <nuxt-link to="/">
+        <InauditaLogo/>
+      </nuxt-link>
     </div>
     <div class="app-nav-links ml-auto text-right">
       <NuxtLink to="/films">Películas</NuxtLink>
