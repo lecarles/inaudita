@@ -1,6 +1,5 @@
 <template>
   <FilmPage :movie="movie" />
-  <inaudita-footer />
 </template>
 
 <script setup>

@@ -14,7 +14,7 @@
   --color-foreground: var(--color-white);
   --text-sm: clamp(0.8rem, 1vi + 0.2rem, 1.15rem);
   --text-base: clamp(1rem, 1vi + 0.3rem, 1.65rem);
-  --text-md: clamp(1.2rem, 1vi + 0.6rem, 2rem);
+  --text-md: clamp(1.4rem, 1vi + 0.7rem, 2.25rem);
   --text-lg: clamp(1.35rem, 1vi + 0.8rem, 3rem);
   --text-xl: clamp(2.5rem, 4.5vi + 2rem, 12rem);
   --text-2xl: clamp(3rem, 5.5vi + 2rem, 14rem);
@@ -25,8 +25,8 @@
   --xl: calc(var(--spacing) * 60);
   --2xl: calc(var(--spacing) * 120);
   --spacing: clamp(0.12rem, 0.2vi + 0.05rem, .25rem);
-  --nav-height: calc(var(--text-md) * 1.75 + var(--sm) * 2);
-  --footer-height: calc(var(--text-md) * 0.9 + var(--sm) * 2);
+  --nav-height: calc(var(--text-md) * 1.1 + var(--sm) * 2);
+  --footer-height: calc(var(--text-md) * 1 + var(--sm) * 2);
 }
 
 @layer base {

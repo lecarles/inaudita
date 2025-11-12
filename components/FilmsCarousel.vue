@@ -4,13 +4,10 @@
       <nuxt-link :to="`/films/${film.slug}`" class="still-link">
         <div class="w-full text-xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
         <div class="text-base z-1 leading-[0.9] mt-(--sm)">
-          <div class="film-info gap-(--lg)">
+          <div class="film-info gap-(--lg) w-[70ch]">
             <div class="text-left">({{film.content.releaseDate.slice(0, 4)}})</div>
             <div>{{film.content.shortText}}</div>
             <div class="text-right">{{film.content.duration}}’</div>
-          </div>
-          <div class="mt-3 md:mt-1">
-            {{ film.content.longText }}
           </div>
         </div>
         <video :src="`/video/${film.content.video}`" autoplay muted loop playsinline></video>
@@ -66,7 +63,7 @@ onMounted(() => {
 .films-carousel {
   position: relative;
   width: 100%;
-  height: calc(100dvh - var(--nav-height) - var(--sm));
+  height: calc(100dvh - var(--nav-height) - var(--footer-height));
   background: var(--color-black);
 
   .still {
