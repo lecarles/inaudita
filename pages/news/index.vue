@@ -1,12 +1,11 @@
 <template>
-  <div class="news-index p-(--md) md:py-(--md) md:px-(--xl)">
+  <div class="news-index p-(--md) pt-(--md) pb-(--lg) md:px-(--xl)">
     <nuxt-link :to="`/news/${article.slug}`" class="text-foreground" v-for="article in news.data.stories" :key="article._uid">
       <img :src="article.content.image.filename + '/m/600x0'" alt="">
-      <div class="text-base uppercase mt-(--sm)">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
-      <div class="text-lg uppercase leading-[0.9]">{{article.content.headline}}</div>
+      <div class="text-sm font-regular mt-(--sm)">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
+      <div class="text-lg uppercase leading-[0.9] mt-(--sm)">{{article.content.headline}}</div>
     </nuxt-link>
   </div>
-  <inaudita-footer />
 </template>
 
 <script setup>

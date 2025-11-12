@@ -1,15 +1,14 @@
 <template>
   <div class="news-page">
-    <div class="news-header">
-      <div class="news-headline text-white text-xl leading-[0.9] uppercase">{{ news.data.story.content.headline }}</div>
+    <div class="news-header text-lg">
       <img :src="news.data.story.content.image.filename + '/m/1200x0'" alt="">
+      <div class="news-headline text-white text-[1.5em] md:text-[2em] text-center p-(--md) max-w-[40ch] leading-[0.9] uppercase">{{ news.data.story.content.headline }}</div>
     </div>
-    <div class="news-content mt-(--sm) text-foreground bg-bacgkround py-(--lg) grid md:grid-cols-2 gap-(--md)">
-      <div class="text-base uppercase mb-(--md)">{{ new Date(news.data.story.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
+    <div class="news-content mt-(--sm) text-background py-(--lg) px-(--md) grid md:grid-cols-2 gap-(--md)">
+      <div class="text-base font-regular mb-(--md)">{{ new Date(news.data.story.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
       <div v-html="renderRichText(news.data.story.content.body)"></div>
     </div>
   </div>
-  <inaudita-footer />
 </template>
 
 <script setup>
@@ -33,28 +32,30 @@ useServerSeoMeta({
     background: var(--color-black);
     width: 100%;
     padding: var(--sm);
-    height: calc(100dvh - var(--nav-height) - var(--sm));
+    margin: 0 auto;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
     .news-headline {
       z-index: 10;
       text-wrap: balance;
+      height: calc(45dvh - var(--nav-height) - var(--sm) * 2);
+      display: flex;
+      justify-content: center;
     }
 
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 55dvh;
+      object-fit: contain;
     }
   }
 
   .news-content {
     min-height: calc(100dvh - var(--nav-height) - var(--sm) * 2);
+    background-color: var(--color-gray);
     
     p {
       margin-bottom: var(--sm);

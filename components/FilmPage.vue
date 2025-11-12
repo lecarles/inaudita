@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="film-info mt-(--sm)">
-      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--lg) px-(--sm) md:px-(--lg)">
+      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--xl) px-(--sm) md:px-(--lg)">
         <div class="md:px-(--sm) md:pl-(--sm) md:pr-(--md)">
           <div class="film-info-description text-md font-regular leading-[1.1]">
             {{ movie.data.story.content.summary }}
@@ -66,7 +66,7 @@ const props = defineProps({
     grid-template-rows: auto;
     align-items: end;
     padding: var(--sm);
-    height: calc(100dvh - var(--nav-height) - var(--sm));
+    height: calc(100dvh - var(--nav-height) - var(--footer-height));
 
     &-container {
       position: absolute;

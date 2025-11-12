@@ -26,6 +26,7 @@
   --2xl: calc(var(--spacing) * 120);
   --spacing: clamp(0.12rem, 0.2vi + 0.05rem, .25rem);
   --nav-height: calc(var(--text-md) * 1.75 + var(--sm) * 2);
+  --footer-height: calc(var(--text-md) * 0.9 + var(--sm) * 2);
 }
 
 @layer base {

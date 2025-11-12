@@ -32,6 +32,10 @@ const films = await storyblokApi.get('cdn/stories/', {
     color: var(--color-white);
     overflow: hidden;
 
+    &:hover {
+      color: var(--color-yellow);
+    }
+
     &:last-child {
       border-bottom: none;
     }

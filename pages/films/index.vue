@@ -1,10 +1,9 @@
 <template>
-  <div class="films-page p-(--md) md:py-(--md) md:px-(--xl)">
+  <div class="films-page pt-(--md) pb-(--lg) md:px-(--xl)">
     <nuxt-link v-for="film in films.data.stories" class="film-item" :key="film._uid" :to="`/films/${film.slug}`">
       <img v-if="film.content.poster" :src="film.content.poster.filename" :alt="film.content.title" />
     </nuxt-link>
   </div>
-  <inaudita-footer />
 </template>
 
 <script setup>

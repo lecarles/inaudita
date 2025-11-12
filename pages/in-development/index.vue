@@ -1,12 +1,11 @@
 <template>
-  <div class="in-dev-index p-(--md) md:py-(--md) md:px-(--xl)">
+  <div class="in-dev-index px-(--md) pt-(--md) pb-(--lg) md:px-(--xl)">
     <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
-      <div class="text-base uppercase mt-(--sm)">{{ film.content.state }}</div>
+      <div class="text-base font-regular mt-(--sm)">{{ film.content.state }}</div>
       <div class="text-lg uppercase leading-[0.9] text-balance">{{film.content.title}}</div>
     </nuxt-link>
   </div>
-  <inaudita-footer />
 </template>
 
 <script setup>

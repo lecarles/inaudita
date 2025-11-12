@@ -14,12 +14,16 @@
 
 <style lang="scss">
 .inaudita-footer {
+  position: fixed;
+  bottom: 0;
   display: flex;
   width: 100%;
   text-transform: uppercase;
   line-height: .9;
   flex-wrap: wrap;
   justify-items: center;
+  background-color: var(--color-background);
+  z-index: 10;
 
   svg {
     height: 1.75em;
