@@ -5,7 +5,9 @@
         <a href="https://www.youtube.com/@inauditafilms/" target="_blank" rel="noopener">Youtube</a>
     </div>
     <div class="logo">
-      <nuxt-link to="/"><InauditaLogo/></nuxt-link>
+      <nuxt-link to="/">
+        <InauditaLogo/>
+      </nuxt-link>
     </div>
     <div class="ml-auto"><a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a></div>
   </div>
