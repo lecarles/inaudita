@@ -4,7 +4,7 @@
       <div class="film-video-container">
         <video :src="`/video/${movie.data.story.content.video}`" autoplay loop playsinline muted v-if="movie.data.story.content.video"></video>
         <img :src="movie.data.story.content.coverImage.filename" alt="" v-else-if="movie.data.story.content.coverImage">
-        <img :src="movie.data.story.content.stills[0].filename" alt="" v-else-if="movie.data.story.content.stills[0]">
+        <img :src="movie.data.story.content.stills[0].filename" alt="" v-else="movie.data.story.content.stills[0].filename">
       </div>
       <div class="text-balance text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
       <div class="flex mt-(--sm) md:mt-0 md:block text-right text-md md:text-xl leading-[0.9] z-10">
@@ -29,7 +29,7 @@
             <div class="film-credits-cast-names flex gap-(--sm)" v-html="renderRichText(movie.data.story.content.cast)"></div>
           </div>
           <div class="film-info-awards-wrapper mt-(--md)" v-if="movie.data.story.content.awards[0]">
-            <div class="text-base w-full font-regular pt-(--sm)">Premios</div>
+            <div class="text-base w-full font-regular pt-(--sm)"></div>
             <div class="film-info-awards" v-if="movie.data.story.content.awards[0]">
               <img v-for="award in movie.data.story.content.awards" :src="award.filename" :alt="award.title" :key="award._uid" />
             </div>
