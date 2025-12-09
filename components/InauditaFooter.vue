@@ -1,10 +1,9 @@
 <template>
-  <div class="inaudita-footer text-md p-(--sm)">
-    <div><a href="mailto:info@inauditafilms.com">info@inauditafilms.com</a></div>
-    <div class="md:ml-auto text-right flex gap-(--sm)">
-        <a href="https://instagram.com/inauditafilms/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/@inauditafilms/" target="_blank" rel="noopener">Youtube</a>
-    </div>
+  <div class="inaudita-footer text-base p-(--sm)">
+    <NuxtLink to="/films">Películas</NuxtLink>
+    <NuxtLink to="/in-development">En desarrollo</NuxtLink>
+    <NuxtLink to="/news">Noticias</NuxtLink>
+    <NuxtLink to="/about">Nosotros</NuxtLink>
   </div>
 </template>
 
@@ -21,13 +20,13 @@
   text-transform: uppercase;
   line-height: .9;
   flex-wrap: wrap;
-  justify-items: center;
+  gap: var(--sm);
+  justify-content: center;
   background-color: var(--color-background);
   z-index: 10;
 
-  svg {
-    height: 1.75em;
-    width: auto;
+  a:hover {
+    text-decoration: underline;
   }
 }
 </style>

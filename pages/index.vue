@@ -2,7 +2,7 @@
   <div class="inaudita-home">
     <films-carousel />
     <div class="film-list text-center p-(--sm) mt-(--sm)">
-      <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-xl md:text-2xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
+      <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-2xl md:text-3xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
     <film-list />
     </div>
   </div>

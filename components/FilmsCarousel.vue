@@ -1,16 +1,13 @@
 <template>
-  <div class="films-carousel text-white text-center uppercase">
+  <div class="films-carousel text-white text-center">
     <div ref="stillsArr" v-for="(film, i) in films.data.stories" :key="i" class="still">
       <nuxt-link :to="`/films/${film.slug}`" class="still-link">
-        <div class="w-full text-xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
-        <div class="text-base z-1 leading-[0.9] mt-(--sm)">
-          <div class="film-info gap-(--lg)">
+        <div class="w-full text-2xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
+        <div class="text-sm font-regular z-1 leading-[0.9] mt-(--sm) uppercase">
+          <div class="film-info flex gap-(--sm)">
             <div class="text-left">({{film.content.releaseDate.slice(0, 4)}})</div>
             <div>{{film.content.shortText}}</div>
-            <div class="text-right">{{film.content.duration}}’</div>
-          </div>
-          <div class="mt-3 md:mt-1">
-            {{ film.content.longText }}
+            <div class="text-right">({{film.content.duration}}’)</div>
           </div>
         </div>
         <video :src="`/video/${film.content.video}`" autoplay muted loop playsinline></video>
@@ -87,14 +84,8 @@ onMounted(() => {
       justify-content: flex-end;
       width: 100%;
       height: 100%;
-      padding: var(--lg) calc(var(--spacing) * 6);
+      padding: calc(var(--spacing) * 40) calc(var(--spacing) * 12);
       z-index: 0;
-
-      .film-info {
-        display: grid;
-        grid-template-columns: 5ch 1fr 5ch;
-        gap: var(--md);
-      }
     }
 
     video {

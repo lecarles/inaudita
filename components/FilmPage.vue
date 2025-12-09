@@ -6,8 +6,8 @@
         <img :src="movie.data.story.content.coverImage.filename" alt="" v-else-if="movie.data.story.content.coverImage">
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else="movie.data.story.content.stills[0].filename">
       </div>
-      <div class="text-balance text-left text-xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
-      <div class="flex mt-(--sm) md:mt-0 md:block text-right text-md md:text-xl leading-[0.9] z-10">
+      <div class="text-balance text-left text-2xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
+      <div class="flex mt-(--sm) md:mt-0 md:block text-right text-md md:text-2xl leading-[0.9] z-10">
         <div  v-if="movie.data.story.content.releaseDate" class="mr-auto">{{ movie.data.story.content.releaseDate.slice(0, 4)}}</div>
         <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
       </div>

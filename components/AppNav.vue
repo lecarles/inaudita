@@ -1,13 +1,9 @@
 <template>
-  <div class="app-nav p-(--sm) md:text-md text-base uppercase leading-[0.9]">
-    <div class="logo">
-      <nuxt-link to="/"><InauditaLogo/></nuxt-link>
-    </div>
-    <div class="app-nav-links ml-auto text-right">
-      <NuxtLink to="/films">Películas</NuxtLink>/
-      <NuxtLink to="/in-development">En desarrollo</NuxtLink>
-      <NuxtLink to="/news">Noticias</NuxtLink>/
-      <NuxtLink to="/about">Nosotros</NuxtLink>
+  <div class="app-nav p-(--sm) md:text-md text-base uppercase items-center leading-[0.9]">
+    <div class="logo mx-auto">
+      <nuxt-link to="/">
+        <InauditaLogo/>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -27,6 +23,10 @@ import { onMounted } from 'vue'
   width: 100vw;
   z-index: 20;
 
+  a:hover {
+    text-decoration: underline;
+  }
+
   .toggle-nav {
     display: none;
   }
@@ -45,7 +45,7 @@ import { onMounted } from 'vue'
 
   .logo {
     svg {
-      height: 1.75em;
+      height: 1.1em;
       width: auto;
     }
   }

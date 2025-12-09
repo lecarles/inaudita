@@ -1,9 +1,12 @@
 <template>
-  <div class="in-dev-index px-(--md) pt-(--md) pb-(--lg) md:px-(--xl)">
+  <div class="in-dev-index pt-(--md) pb-(--lg)">
     <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
-      <div class="text-base font-regular mt-(--sm)">{{ film.content.state }}</div>
-      <div class="text-lg uppercase leading-[0.9] text-balance">{{film.content.title}}</div>
+      <div class="flex uppercase text-sm mt-(--sm) px-(--sm)">
+        <div class="font-regular">Documental</div>
+        <div class="font-regular mr-auto">{{ film.content.state }}</div>
+      </div>
+      <div class="text-xl leading-[0.9] text-balance px-(--sm)">{{film.content.title}}</div>
     </nuxt-link>
   </div>
 </template>
@@ -42,15 +45,13 @@ useServerSeoMeta({
 
 <style lang="scss" scoped>
 .in-dev-index {
-  margin: var(--nav-height) auto var(--xl);
+  margin: var(--nav-height) 0 var(--xl);
   background: var(--color-background);
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat( auto-fill, minmax(600px, 1fr));
   grid-template-rows: auto;
-  column-gap: var(--sm);
   row-gap: var(--lg);
   min-height: calc(100dvh - var(--nav-height) - var(--sm) * 2);
-  max-width: 2400px;
 
   img {
     width: 100%;
