@@ -3,10 +3,9 @@
     <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
       <div class="flex uppercase text-sm mt-(--sm) px-(--sm)">
-        <div class="font-regular">Documental</div>
         <div class="font-regular mr-auto">{{ film.content.state }}</div>
       </div>
-      <div class="text-xl leading-[0.9] text-balance px-(--sm)">{{film.content.title}}</div>
+      <div class="text-xl leading-[1] text-balance px-(--sm) mt-(--sm)">{{film.content.title}}</div>
     </nuxt-link>
   </div>
 </template>

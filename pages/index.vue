@@ -2,7 +2,7 @@
   <div class="inaudita-home">
     <films-carousel />
     <div class="film-list text-center p-(--sm) mt-(--sm)">
-      <h1 class="leading-[0.9] p-(--md) py-(--xl) md:p-(--xl) text-2xl md:text-3xl">APOYAMOS EL CINE EN EL QUE NADIE CONFIA.</h1>
+      <h2 class="leading-[0.9] p-(--md) py-(--xl) text-xl">Apoyamos el cine en el que nadie confía</h2>
     <film-list />
     </div>
   </div>
@@ -22,7 +22,7 @@ useServerSeoMeta({
 
 <style lang="scss" scoped>
 .inaudita-home {
-  padding: 0 var(--sm) var(--sm);
+  padding: 0;
   margin-top: var(--nav-height);
 
   .home-footer {

@@ -1,9 +1,9 @@
 <template>
   <div class="films-carousel text-white text-center">
     <div ref="stillsArr" v-for="(film, i) in films.data.stories" :key="i" class="still">
-      <nuxt-link :to="`/films/${film.slug}`" class="still-link">
+      <nuxt-link :to="`/films/${film.slug}`" class="still-link pb-30 px-8">
         <div class="w-full text-2xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
-        <div class="text-sm font-regular z-1 leading-[0.9] mt-(--sm) uppercase">
+        <div class="text-sm z-1 leading-[0.9] mt-(--md) uppercase">
           <div class="film-info flex gap-(--sm)">
             <div class="text-left">({{film.content.releaseDate.slice(0, 4)}})</div>
             <div>{{film.content.shortText}}</div>
@@ -63,7 +63,7 @@ onMounted(() => {
 .films-carousel {
   position: relative;
   width: 100%;
-  height: calc(100dvh - var(--nav-height) - var(--sm));
+  height: calc(100dvh - var(--nav-height) - var(--footer-height));
   background: var(--color-black);
 
   .still {
@@ -84,7 +84,6 @@ onMounted(() => {
       justify-content: flex-end;
       width: 100%;
       height: 100%;
-      padding: calc(var(--spacing) * 40) calc(var(--spacing) * 12);
       z-index: 0;
     }
 

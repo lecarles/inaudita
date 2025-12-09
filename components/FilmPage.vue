@@ -1,18 +1,19 @@
 <template>
   <div class="inaudita-film">
-    <div class="film-video uppercase text-white">
+    <div class="film-video text-white pb-30 px-8">
       <div class="film-video-container">
         <video :src="`/video/${movie.data.story.content.video}`" autoplay loop playsinline muted v-if="movie.data.story.content.video"></video>
         <img :src="movie.data.story.content.coverImage.filename" alt="" v-else-if="movie.data.story.content.coverImage">
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else="movie.data.story.content.stills[0].filename">
       </div>
       <div class="text-balance text-left text-2xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
-      <div class="flex mt-(--sm) md:mt-0 md:block text-right text-md md:text-2xl leading-[0.9] z-10">
-        <div  v-if="movie.data.story.content.releaseDate" class="mr-auto">{{ movie.data.story.content.releaseDate.slice(0, 4)}}</div>
-        <div v-if="movie.data.story.content.duration">{{ movie.data.story.content.duration }}’</div>
+      <div class="flex gap-(--sm) uppercase z-10 text-sm mt-(--md)">
+        <div class="text-left">({{movie.data.story.content.releaseDate.slice(0, 4)}})</div>
+        <div>{{movie.data.story.content.shortText}}</div>
+        <div class="text-right">({{movie.data.story.content.duration}}’)</div>
       </div>
     </div>
-    <div class="film-info mt-(--sm)">
+    <div class="film-info">
       <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--xl) px-(--sm) md:px-(--lg)">
         <div class="md:px-(--sm) md:pl-(--sm) md:pr-(--md)">
           <div class="film-info-description text-md font-regular leading-[1.1]">
@@ -54,19 +55,18 @@ const props = defineProps({
 
 <style lang="scss">
 .inaudita-film {
-  padding: 0 var(--sm);
+  padding: 0;
   margin-top: var(--nav-height);
 
   .film-video {
     position: relative;
     background: var(--color-black);
     width: 100%;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto;
-    align-items: end;
-    padding: var(--sm);
     height: calc(100dvh - var(--nav-height) - var(--footer-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 
     &-container {
       position: absolute;

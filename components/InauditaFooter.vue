@@ -24,6 +24,7 @@
   justify-content: center;
   background-color: var(--color-background);
   z-index: 10;
+  height: var(--footer-height);
 
   a:hover {
     text-decoration: underline;
