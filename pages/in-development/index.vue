@@ -1,11 +1,11 @@
 <template>
   <div class="in-dev-index pt-(--md) pb-(--lg)">
-    <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground" v-for="film in sortedFilms" :key="film._uid">
+    <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground film-link" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
       <div class="flex uppercase text-sm mt-(--sm) px-(--sm)">
-        <div class="font-regular mr-auto">{{ film.content.state }}</div>
+        <div class="mr-auto">{{ film.content.state }}</div>
       </div>
-      <div class="text-xl leading-[1] text-balance px-(--sm) mt-(--sm)">{{film.content.title}}</div>
+      <div class="text-xl leading-[1] text-balance px-(--sm) mt-1">{{film.content.title}}</div>
     </nuxt-link>
   </div>
 </template>
@@ -58,6 +58,23 @@ useServerSeoMeta({
     object-fit: cover;
     aspect-ratio: 16/9;
   }
+}
+
+
+.film-link {
+  &:has(~ .film-link:hover) {
+    opacity: 0.5;
+  }
+
+  &:hover ~ .film-link {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  transition: opacity 0.2s ease;
 }
 
 @media (max-width: 900px) {

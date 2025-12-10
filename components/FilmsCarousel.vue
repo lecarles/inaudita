@@ -1,15 +1,15 @@
 <template>
   <div class="films-carousel text-white text-center">
     <div ref="stillsArr" v-for="(film, i) in films.data.stories" :key="i" class="still">
-      <nuxt-link :to="`/films/${film.slug}`" class="still-link pb-30 px-8">
-        <div class="w-full text-2xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
-        <div class="text-sm z-1 leading-[0.9] mt-(--md) uppercase">
-          <div class="film-info flex gap-(--sm)">
+      <nuxt-link :to="`/films/${film.slug}`" class="still-link pb-20 px-6">
+        <div class="text-sm z-1 leading-[0.9] mt-(--md) uppercase w-full border-b-1 border-white/70 pb-(--sm) mb-(--sm)">
+          <div class="film-info flex gap-(--sm) w-full">
             <div class="text-left">({{film.content.releaseDate.slice(0, 4)}})</div>
-            <div>{{film.content.shortText}}</div>
+            <div class="mx-auto">{{film.content.shortText}}</div>
             <div class="text-right">({{film.content.duration}}’)</div>
           </div>
         </div>
+        <div class="w-full text-2xl z-1 leading-[0.9] text-balance">{{ film.content.title }}</div>
         <video :src="`/video/${film.content.video}`" autoplay muted loop playsinline></video>
       </nuxt-link>
     </div>

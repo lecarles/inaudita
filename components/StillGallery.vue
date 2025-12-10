@@ -19,14 +19,12 @@
       @click="closeFullscreen"
     >
       <div class="fullscreen-container">
-        <div 
-          class="fullscreen-still"
-          :style="{ backgroundImage: `url(${stillsArray[selectedStill].filename}/m/1920x0)` }"
-        >
-          <button class="close-btn text-regular text-lg" @click="closeFullscreen">×</button>
-          <button class="nav-btn prev" @click.stop="previousStill" v-if="stillsArray.length > 1">←</button>
-          <button class="nav-btn next" @click.stop="nextStill" v-if="stillsArray.length > 1">→</button>
-        </div>
+        <img class="fullscreen-still" :src="`${stillsArray[selectedStill].filename}/m/1920x0`" />
+          <div class="gallery-nav uppercase text-sm">
+            <button class="nav-btn prev p-(--sm)" @click.stop="previousStill" v-if="stillsArray.length > 1">←</button>
+            <button class="close-btn  p-(--sm)uppercase text-sm mx-auto" @click="closeFullscreen">Cerrar</button>
+            <button class="nav-btn next p-(--sm)" @click.stop="nextStill" v-if="stillsArray.length > 1">→</button>
+          </div>
       </div>
     </div>
   </div>
@@ -153,73 +151,33 @@ onBeforeUnmount(() => {
 }
 
 .fullscreen-container {
-  width: 95vw;
-  height: 95vh;
+  width: 100vw;
+  height: 100dvh;
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr 4em;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 .fullscreen-still {
   width: 100%;
   height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  border-radius: 8px;
+  max-width: calc(100vw - 4em);
+  max-height: calc(100dvh - 4em);
+  object-fit: contain;
 }
 
-.close-btn {
-  position: absolute;
-  top: var(--sm);
-  right: var(--sm);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
+.gallery-nav {
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid var(--color-foreground);
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-  z-index: 10;
-}
+  text-transform: uppercase;
 
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
-
-  &.prev {
-    left: var(--md);
-
-    &:hover {
-      transform: translateY(-50%) translateX(-6%);
-    }
-  }
-
-  &.next {
-    right: var(--md);
-    
-    &:hover {
-      transform: translateY(-50%) translateX(6%);
-    }
+  button {
+    cursor: pointer;
   }
 }
 

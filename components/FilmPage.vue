@@ -1,26 +1,27 @@
 <template>
   <div class="inaudita-film">
-    <div class="film-video text-white pb-30 px-8">
+    <div class="film-video text-white pb-20 px-6">
       <div class="film-video-container">
         <video :src="`/video/${movie.data.story.content.video}`" autoplay loop playsinline muted v-if="movie.data.story.content.video"></video>
         <img :src="movie.data.story.content.coverImage.filename" alt="" v-else-if="movie.data.story.content.coverImage">
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else="movie.data.story.content.stills[0].filename">
       </div>
-      <div class="text-balance text-left text-2xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
-      <div class="flex gap-(--sm) uppercase z-10 text-sm mt-(--md)">
+      <div class="flex gap-(--sm) uppercase z-10 text-sm w-full border-b-1 border-white/70 pb-(--sm) mb-(--sm)">
         <div class="text-left">({{movie.data.story.content.releaseDate.slice(0, 4)}})</div>
-        <div>{{movie.data.story.content.shortText}}</div>
+        <div class="mx-auto">{{movie.data.story.content.shortText}}</div>
         <div class="text-right">({{movie.data.story.content.duration}}’)</div>
       </div>
+      <div class="text-balance text-left text-2xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
     </div>
     <div class="film-info">
-      <div class="grid md:grid-cols-2 gap-(--lg) bg-gray text-black pt-(--md) pb-(--xl) px-(--sm) md:px-(--lg)">
+      <div class="grid md:grid-cols-2 gap-(--lg) bg-white text-black pt-(--md) pb-(--xl) px-(--sm) md:px-(--lg)">
         <div class="md:px-(--sm) md:pl-(--sm) md:pr-(--md)">
           <div class="film-info-description text-md font-regular leading-[1.1]">
             {{ movie.data.story.content.summary }}
           </div>
           <div class="film-info-links text-md uppercase" v-html="renderRichText(movie.data.story.content.links)">
           </div>
+          <img class="mt-(--md) max-h-[60vh]" :src="movie.data.story.content.poster.filename" alt="" v-if="movie.data.story.content.poster">
         </div>
         <div class="film-info-credits text-base font-regular">
           <div v-if="movie.data.story.content.creditsPrimary.content.length > 1" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>

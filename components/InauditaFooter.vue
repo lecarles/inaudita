@@ -1,5 +1,5 @@
 <template>
-  <div class="inaudita-footer text-base p-(--sm)">
+  <div class="inaudita-footer text-sm p-(--sm)">
     <NuxtLink to="/films">Películas</NuxtLink>
     <NuxtLink to="/in-development">En desarrollo</NuxtLink>
     <NuxtLink to="/news">Noticias</NuxtLink>
@@ -20,7 +20,7 @@
   text-transform: uppercase;
   line-height: .9;
   flex-wrap: wrap;
-  gap: var(--sm);
+  gap: var(--md);
   justify-content: center;
   background-color: var(--color-background);
   z-index: 10;
