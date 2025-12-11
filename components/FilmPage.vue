@@ -21,7 +21,7 @@
           </div>
           <div class="film-info-links text-md uppercase" v-html="renderRichText(movie.data.story.content.links)">
           </div>
-          <img class="mt-(--md) max-h-[60vh]" :src="movie.data.story.content.poster.filename" alt="" v-if="movie.data.story.content.poster">
+          <img class="mt-(--md) md:max-h-[60vh]" :src="movie.data.story.content.poster.filename" alt="" v-if="movie.data.story.content.poster">
         </div>
         <div class="film-info-credits text-base font-regular">
           <div v-if="movie.data.story.content.creditsPrimary.content.length > 1" class="film-credits-primary" v-html="renderRichText(movie.data.story.content.creditsPrimary)"></div>
@@ -129,6 +129,7 @@ const props = defineProps({
         max-width: 350px;
         object-fit: contain;
         filter: grayscale(1) invert(1);
+        margin: auto;
       }
     }
   }

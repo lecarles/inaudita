@@ -18,8 +18,8 @@
   --text-md: clamp(1.25rem, 1vi + 0.5rem, 1.5rem);
   --text-lg: clamp(1.5rem, 1vi + 0.6rem, 1.75rem);
   --text-xl: clamp(1.8rem, 1.3vi + 1rem, 4.5rem);
-  --text-2xl: clamp(2.5rem, 4.5vi + 2rem, 12rem);
-  --text-3xl: clamp(3rem, 5.5vi + 2rem, 14rem);
+  --text-2xl: clamp(2.5rem, 3vi + 2rem, 12rem);
+  --text-3xl: clamp(3rem, 5vi + 2rem, 14rem);
   --xs: calc(var(--spacing) * 2);
   --sm: calc(var(--spacing) * 4);
   --md: calc(var(--spacing) * 12);
@@ -29,6 +29,7 @@
   --spacing: clamp(0.12rem, 0.2vi + 0.05rem, .25rem);
   --nav-height: calc(var(--text-md) * 0.9 + var(--sm) * 2);
   --footer-height: calc(var(--text-md) * 0.9 + var(--sm) * 2);
+  --content-height: calc(100dvh - var(--nav-height) - var(--footer-height));
 }
 
 @layer base {

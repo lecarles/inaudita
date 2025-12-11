@@ -1,20 +1,20 @@
 <template>
   <div class="about-page relative">
-    <div class="px-(--sm) mb-(--lg) mt-(--nav-height)">
-      <div class="about-header grid md:grid-cols-2 justify-items-center items-center text-md px-(--md)">
-        <img :src="story.content.image.filename" alt=""></img>
-        <h2 class="text-[1.25em] md:text-[1.5em] max-w-[35ch] mb-4 text-balance text-center leading-[0.98]">{{story.content.headline}}</h2>
-      </div>
-      <div class="grid md:grid-cols-2 bg-gray text-black px-(--sm) pt-(--sm) pb-(--lg) min-h-[100dvh]">
-        <h2 class="text-lg max-w-[35ch] mb-4 text-balance leading-[0.98]">{{story.content.headline2}}</h2>
-        <div>
-          <div v-html="renderRichText(story.content.body)" class="font-regular md:col-2"></div>
-          <div v-html="renderRichText(story.content.text2)" class="font-regular md:col-2"></div>
+    <div class="mt-(--nav-height)">
+      <div class="about-header grid md:grid-cols-2 md:max-h-(--content-height)">
+        <img :src="story.content.image.filename" alt="" class="max-h-[50vh] md:max-h-(--content-height)" />
+        <div class="px-(--md) text-foreground mt-(--md) md:col-2 md:m-auto pb-(--md)">
+          <h2 class="text-xl md:max-w-[35ch] mb-4 md:text-balance leading-[0.98]">{{story.content.headline}}</h2>
+          <div class="mt-(--md) text-base font-regular" v-html="renderRichText(story.content.body)"></div>
+          <div class="mt-(--sm) text-sm font-regular" v-html="renderRichText(story.content.text2)"></div>
         </div>
       </div>
-      <!-- <div class="flex items-center justify-center relative my-(--lg)">
-        <img :src="story.content.image2.filename" class="md:max-h-[80vh]" alt="">
-      </div> -->
+      <div class="py-(--xl) w-full flex flex-col">
+        <h2 class="text-md mx-auto text-balance leading-[0.98]">{{story.content.headline2}}</h2>
+        <div class="about-logos px-(--sm) md:px-(--xl)" v-if="story.content.logos[0]">
+          <img v-for="logo in story.content.logos" :src="logo.filename" :alt="logo.title" :key="logo._uid" />
+        </div>
+      </div>
     </div>
     <div class="mt-(--nav-height) mb-(--footer-height)"><InauditaMarquee><div class="inaudita-logo-wrapper"><inaudita-logo /></div></InauditaMarquee></div>
   </div>
@@ -45,21 +45,38 @@ useServerSeoMeta({
 }
 
 .about-header {
-  height: calc(100dvh - var(--nav-height) - var(--nav-height)/2);
+  min-height: calc(100dvh - var(--nav-height) - var(--footer-height));
+  width: 100%;
+  position: relative;
 
   img {
-    width: auto;
-    height: 70dvh;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
-.headline-img { 
-  position: absolute;
-  top: 40vh;
-  left: 50%;
-  height: 100vh;
-  transform: translateX(-50%);
+.about-logos {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  column-gap: 3em;
+  row-gap: 1.5em;
+  padding-top: var(--lg);
+  height: fit-content;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  row-gap: var(--md);
+  column-gap: var(--md);
+
+  img {
+    min-width: 90px;
+    height: 4em;
+    width: 18em;
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 900px) {
@@ -67,6 +84,11 @@ useServerSeoMeta({
     svg {
       height: 50vh;
     }
+  }
+
+  .about-logos img {
+    max-height: 40px;
+    max-width: 200px;
   }
 }
 </style>

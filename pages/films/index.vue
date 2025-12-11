@@ -1,5 +1,5 @@
 <template>
-  <div class="films-page pt-(--md) pb-(--lg)">
+  <div class="films-page pb-(--lg)">
     <nuxt-link v-for="film in films.data.stories" class="film-link" :key="film._uid" :to="`/films/${film.slug}`">
       <video :src="`/video/${film.content.video}`" loop playsinline muted :alt="film.content.title" @mouseenter="($event) => $event.target.play()" @mouseleave="($event) => $event.target.pause()" />
       <div class="film-link-info grid p-(--sm)">

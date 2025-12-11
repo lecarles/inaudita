@@ -1,9 +1,9 @@
 <template>
-  <div class="news-index p-(--md) pt-(--md) pb-(--lg) md:px-(--xl)">
-    <nuxt-link :to="`/news/${article.slug}`" class="text-foreground" v-for="article in news.data.stories" :key="article._uid">
-      <img :src="article.content.image.filename + '/m/600x0'" alt="">
-      <div class="text-sm font-regular mt-(--sm)">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
-      <div class="text-lg uppercase leading-[0.9] mt-(--sm)">{{article.content.headline}}</div>
+  <div class="news-index pb-(--lg)">
+    <nuxt-link :to="`/news/${article.slug}`" class="news-link text-foreground" v-for="article in news.data.stories" :key="article._uid">
+      <img :src="article.content.image.filename + '/m/800x0'" alt="">
+      <div class="text-sm font-regular p-(--sm) uppercase">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
+      <div class="text-lg leading-[0.9] px-(--sm)">{{article.content.headline}}</div>
     </nuxt-link>
   </div>
 </template>
@@ -23,21 +23,35 @@ useServerSeoMeta({
 
 <style lang="scss" scoped>
 .news-index {
-  margin: var(--nav-height) auto 0;
+  margin: var(--nav-height) 0 var(--xl);
   background: var(--color-background);
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat( auto-fill, minmax(600px, 1fr));
   grid-template-rows: auto;
-  column-gap: var(--md);
   row-gap: var(--lg);
   min-height: calc(100dvh - var(--nav-height) - var(--sm) * 2);
-  max-width: 2400px;
 
   img {
     width: 100%;
     height: auto;
     object-fit: cover;
     aspect-ratio: 16/9;
+  }
+}
+
+.news-link {
+  transition: opacity 0.2s ease;
+
+  &:has(~ .news-link:hover) {
+    opacity: 0.5;
+  }
+
+  &:hover ~ .news-link {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
 
