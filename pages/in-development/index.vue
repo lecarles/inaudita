@@ -2,10 +2,10 @@
   <div class="in-dev-index pt-(--md) pb-(--lg)">
     <nuxt-link :to="`/in-development/${film.slug}`" class="text-foreground film-link" v-for="film in sortedFilms" :key="film._uid">
       <img v-if="film.content.coverImage" :src="film.content.coverImage.filename + '/m/600x0'" alt="">
-      <div class="flex uppercase text-sm mt-(--sm) px-(--sm)">
+      <div class="flex uppercase text-sm mt-(--xs) px-(--xs)">
         <div class="mr-auto">{{ film.content.state }}</div>
       </div>
-      <div class="text-xl leading-[1] text-balance px-(--sm) mt-1">{{film.content.title}}</div>
+      <div class="text-xl leading-[1] text-balance px-(--xs) mt-1">{{film.content.title}}</div>
     </nuxt-link>
   </div>
 </template>

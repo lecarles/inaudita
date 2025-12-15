@@ -3,14 +3,17 @@
     <div class="mt-(--nav-height)">
       <div class="about-header grid md:grid-cols-2 md:max-h-(--content-height)">
         <img :src="story.content.image.filename" alt="" class="max-h-[50vh] md:max-h-(--content-height)" />
-        <div class="px-(--md) text-foreground mt-(--md) md:col-2 md:m-auto pb-(--md)">
+        <div class="px-(--md) text-foreground md:col-2 md:m-auto pb-(--md)">
           <h2 class="text-xl md:max-w-[35ch] mb-4 md:text-balance leading-[0.98]">{{story.content.headline}}</h2>
           <div class="mt-(--md) text-base font-regular" v-html="renderRichText(story.content.body)"></div>
-          <div class="mt-(--sm) text-sm font-regular" v-html="renderRichText(story.content.text2)"></div>
+          <div class="flex flex-col mt-(--md)">
+            <a href="mailto:info@inauditafilms.com" class="border-2 leading-[1] flex items-center content-center text-lg px-(--sm) py-(--xs) w-fit hover:text-(--color-primary) hover:border-(--color-primary)">info@inauditafilms.com</a>
+          </div>
         </div>
       </div>
       <div class="py-(--xl) w-full flex flex-col">
-        <h2 class="text-md mx-auto text-balance leading-[0.98]">{{story.content.headline2}}</h2>
+        <div class="text-base font-regular mx-auto max-w-[75ch] text-center" v-html="renderRichText(story.content.text2)"></div>
+        <h2 class="text-sm mt-(--lg) mx-auto text-balance leading-[0.98]">{{story.content.headline2}}</h2>
         <div class="about-logos px-(--sm) md:px-(--xl)" v-if="story.content.logos[0]">
           <img v-for="logo in story.content.logos" :src="logo.filename" :alt="logo.title" :key="logo._uid" />
         </div>
@@ -36,6 +39,11 @@ useServerSeoMeta({
 </script>
 
 <style lang="scss">
+.about-page {
+  p:not(:first-child) {
+    margin-top: var(--sm);
+  }
+}
 .inaudita-logo-wrapper {
   display: flex;
 
@@ -61,9 +69,9 @@ useServerSeoMeta({
   flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
-  column-gap: 3em;
-  row-gap: 1.5em;
-  padding-top: var(--lg);
+  column-gap: 1.75em;
+  row-gap: 1em;
+  padding-top: var(--md);
   height: fit-content;
   align-items: center;
   justify-items: center;
@@ -73,8 +81,8 @@ useServerSeoMeta({
 
   img {
     min-width: 90px;
-    height: 4em;
-    width: 18em;
+    height: 2.5em;
+    width: 9em;
     object-fit: contain;
   }
 }
@@ -87,8 +95,8 @@ useServerSeoMeta({
   }
 
   .about-logos img {
-    max-height: 40px;
-    max-width: 200px;
+    max-height: 30px;
+    max-width: 110px;
   }
 }
 </style>

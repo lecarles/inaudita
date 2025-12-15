@@ -2,7 +2,7 @@
   <div class="news-index pb-(--lg)">
     <nuxt-link :to="`/news/${article.slug}`" class="news-link text-foreground" v-for="article in news.data.stories" :key="article._uid">
       <img :src="article.content.image.filename + '/m/800x0'" alt="">
-      <div class="text-sm font-regular p-(--sm) uppercase">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
+      <div class="text-sm font-regular p-(--xs) uppercase">{{ new Date(article.first_published_at).toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' }) }}</div>
       <div class="text-lg leading-[0.9] px-(--sm)">{{article.content.headline}}</div>
     </nuxt-link>
   </div>

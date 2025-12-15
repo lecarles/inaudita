@@ -7,9 +7,9 @@
         <img :src="movie.data.story.content.stills[0].filename" alt="" v-else="movie.data.story.content.stills[0].filename">
       </div>
       <div class="flex gap-(--sm) uppercase z-10 text-sm w-full border-b-1 border-white/70 pb-(--sm) mb-(--sm)">
-        <div class="text-left">({{movie.data.story.content.releaseDate.slice(0, 4)}})</div>
+        <div v-if="movie.data.story.content.releaseDate" class="text-left">({{movie.data.story.content.releaseDate.slice(0, 4)}})</div>
         <div class="mx-auto">{{movie.data.story.content.shortText}}</div>
-        <div class="text-right">({{movie.data.story.content.duration}}’)</div>
+        <div v-if="movie.data.story.content.duration" class="text-right">({{movie.data.story.content.duration}}’)</div>
       </div>
       <div class="text-balance text-left text-2xl leading-[0.9] z-10">{{ movie.data.story.content.title }}</div>
     </div>
