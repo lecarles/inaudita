@@ -3,7 +3,7 @@
     <div class="mt-(--nav-height)">
       <div class="about-header grid md:grid-cols-2 md:max-h-(--content-height)">
         <img :src="story.content.image.filename" alt="" class="max-h-[50vh] md:max-h-(--content-height)" />
-        <div class="px-(--md) text-foreground md:col-2 md:m-auto pb-(--md)">
+        <div class="px-(--md) text-foreground md:col-2 md:m-auto pb-(--md) mt-(--md) md:mt-0">
           <h2 class="text-xl md:max-w-[35ch] mb-4 md:text-balance leading-[0.98]">{{story.content.headline}}</h2>
           <div class="mt-(--md) text-base font-regular" v-html="renderRichText(story.content.body)"></div>
           <div class="flex flex-col mt-(--md)">
@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="py-(--xl) w-full flex flex-col">
-        <div class="text-base font-regular mx-auto max-w-[75ch] text-center" v-html="renderRichText(story.content.text2)"></div>
-        <h2 class="text-sm mt-(--lg) mx-auto text-balance leading-[0.98]">{{story.content.headline2}}</h2>
+        <div class="text-base font-regular mx-auto max-w-[75ch] md:text-center p-(--md)" v-html="renderRichText(story.content.text2)"></div>
+        <h2 class="text-sm mt-(--lg) mx-auto text-balance leading-[0.98] p-(--md)">{{story.content.headline2}}</h2>
         <div class="about-logos px-(--sm) md:px-(--xl)" v-if="story.content.logos[0]">
           <img v-for="logo in story.content.logos" :src="logo.filename" :alt="logo.title" :key="logo._uid" />
         </div>

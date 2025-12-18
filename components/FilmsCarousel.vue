@@ -46,12 +46,12 @@ onMounted(() => {
   gsap.set(stillsArr.value[0], { opacity: 1 })
   gsap.set(stillsArr.value[0], { zIndex: 1 })
   for (let i = 1; i < stillsArr.value.length; i++) {
-    stillsTl.to(stillsArr.value[i], { opacity: 1 }, '<11.5')
+    stillsTl.to(stillsArr.value[i], { opacity: 1 }, '<4')
     stillsTl.set(stillsArr.value[i], { zIndex: 1 }, '<')
     stillsTl.to(stillsArr.value[i-1], { opacity: 0 }, '<0.01')
     stillsTl.set(stillsArr.value[i-1], { zIndex: 0 }, '<')
   }
-  stillsTl.to(stillsArr.value[0], { opacity: 1 }, '<11.5')
+  stillsTl.to(stillsArr.value[0], { opacity: 1 }, '<4')
   stillsTl.set(stillsArr.value[0], { zIndex: 1 }, '<')
   stillsTl.to(stillsArr.value[stillsArr.value.length - 1], { opacity: 0 }, '<0.01')
   stillsTl.set(stillsArr.value[stillsArr.value.length - 1], { zIndex: 0 }, '<')
