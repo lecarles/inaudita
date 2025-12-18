@@ -14,7 +14,7 @@
   --color-foreground: var(--color-white);
   --color-primary: var(--color-yellow);
   --text-sm: clamp(0.85rem, 1vi + 0.25rem, 1rem);
-  --text-base: clamp(1rem, 1vi + 0.3rem, 1.25rem);
+  --text-base: clamp(1.05rem, 1vi + 0.3rem, 1.25rem);
   --text-md: clamp(1.25rem, 1vi + 0.5rem, 1.5rem);
   --text-lg: clamp(1.5rem, 1vi + 0.6rem, 1.75rem);
   --text-xl: clamp(1.8rem, 1.3vi + 1rem, 4.5rem);
