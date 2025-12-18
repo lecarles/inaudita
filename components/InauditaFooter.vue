@@ -21,6 +21,7 @@
   line-height: .9;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   background-color: var(--color-background);
   z-index: 10;
   height: var(--footer-height);
@@ -28,7 +29,5 @@
   a:hover {
     text-decoration: underline;
   }
-
-  a:ac
 }
 </style>
